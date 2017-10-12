@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.alejo_zr.exceldb">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Carretera.RegistroCarreteraActivity"
+            android:label="@string/regis"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Carretera.ConsultarCarreteraActivity"
+            android:label="@string/consul"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Carretera.CarreteraActivity"
+            android:label="@string/datosCarretera"
+            android:parentActivityName=".Carretera.ConsultarCarreteraActivity" />
+        <activity
+            android:name=".Carretera.EditarCarreteraActivity"
+            android:label="@string/editarCarretera"
+            android:parentActivityName=".Carretera.CarreteraActivity" />
+        <activity
+            android:name=".Segmento.Flexible.RegistroSegmentoFlexActivity"
+            android:label="@string/regisSeg"
+            android:parentActivityName=".Carretera.ConsultarCarreteraActivity" />
+        <activity
+            android:name=".Segmento.Flexible.ConsultarSegmentoFlexActivity"
+            android:label="@string/consulSeg"
+            android:parentActivityName=".Carretera.CarreteraActivity" />
+        <activity
+            android:name=".Segmento.Flexible.SegmentoFlexActivity"
+            android:label="@string/datosSegmento" />
+        <activity
+            android:name=".Segmento.Flexible.EditarSegmentoFlexActivity"
+            android:label="@string/editarSegmento" />
+        <activity
+            android:name=".Patologia.Flexible.RegistroPatoFlexActivity"
+            android:label="@string/regisPatologias" />
+        <activity
+            android:name=".Carretera.ConsulCarreteraActivity"
+            android:label="@string/consul" />
+        <activity android:name=".Patologia.Flexible.RegistroPatologiaFlexActivity" />
+        <activity android:name=".Patologia.Flexible.ConsultaPatologiaFlexActivity" />
+        <activity android:name=".Patologia.Flexible.PatologiaFlexActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity android:name=".Patologia.Flexible.EditarPatologiaActivity" />
+        <activity android:name=".ConsultarSegmentoFlexActivity" />
+        <activity android:name=".Segmento.Rigido.ConsultarSegmentoRigiActivity" />
+        <activity android:name=".Segmento.Rigido.SegmentoRigiActivity" />
+        <activity android:name=".Segmento.Rigido.RegistroSegmentoRigiActivity" />
+        <activity android:name=".Segmento.Rigido.EditarSegmentoRigiActivity" />
+        <activity android:name=".Patologia.Flexible.EditarPatologiaFlexActivity"></activity>
+    </application>
+
+</manifest>
