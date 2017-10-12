@@ -18,14 +18,11 @@ import com.alejo_zr.exceldb.utilidades.Utilidades;
 
 import java.util.ArrayList;
 
-import static com.alejo_zr.exceldb.R.string.segmento;
-
 public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
 
     private ListView listViewSegmentos;
     private ArrayList<String> listaInformacionSegmentos;
     private ArrayList<SegmentoFlex> listaSegmentos;
-    private ArrayList<SegmentoFlex> vectorSegmento;
     private ArrayList<Integer> listaIdSegmentos;
     private TextView tvnomCarretera_consultar_segmentoFlex;
 
@@ -55,7 +52,7 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int posS, long l) {
 
-                posS=posS+1;
+
                 SegmentoFlex segmentoflex=listaSegmentos.get(listaIdSegmentos.get(posS));
                 Intent intent=new Intent(ConsultarSegmentoFlexActivity.this,SegmentoFlexActivity.class);
 
@@ -90,7 +87,7 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int posS, long l) {
 
-                posS=posS+1;
+
                 SegmentoFlex segmentoflex=listaSegmentos.get(listaIdSegmentos.get(posS));
                 Intent intent=new Intent(ConsultarSegmentoFlexActivity.this,SegmentoFlexActivity.class);
 
@@ -118,20 +115,20 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
         while(cursor.moveToNext()){
             segmento = new SegmentoFlex();
 
-                segmento.setId_segmento(cursor.getInt(0));
-                segmento.setNombre_carretera(cursor.getString(1));
-                segmento.setnCalzadas(cursor.getString(2));
-                segmento.setnCarriles(cursor.getString(3));
-                segmento.setAnchoCarril(cursor.getString(4));
-                segmento.setAnchoBerma(cursor.getString(5));
-                segmento.setPri(cursor.getString(6));
-                segmento.setPrf(cursor.getString(7));
-                segmento.setComentarios(cursor.getString(8));
+            segmento.setId_segmento(cursor.getInt(0));
+            segmento.setNombre_carretera(cursor.getString(1));
+            segmento.setnCalzadas(cursor.getString(2));
+            segmento.setnCarriles(cursor.getString(3));
+            segmento.setAnchoCarril(cursor.getString(4));
+            segmento.setAnchoBerma(cursor.getString(5));
+            segmento.setPri(cursor.getString(6));
+            segmento.setPrf(cursor.getString(7));
+            segmento.setComentarios(cursor.getString(8));
 
-                listaSegmentos.add(segmento);
+            listaSegmentos.add(segmento);
         }
 
-       obtenerLista();
+        obtenerLista();
 
     }
 
@@ -145,7 +142,7 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
             boolean nomCarretera = tvnomCarretera_consultar_segmentoFlex.getText().toString().equals(listaSegmentos.get(i).getNombre_carretera());
             if(nomCarretera==true){
                 listaInformacionSegmentos.add("Carretera: "+listaSegmentos.get(i).getNombre_carretera()+" - PRI: "+listaSegmentos.get(i).getPri());
-                listaIdSegmentos.add(listaSegmentos.get(i).getId_segmento());
+                listaIdSegmentos.add(listaSegmentos.get(i).getId_segmento()-1);
 
             }else{
                 //listaInformacionSegmentos.add("NO ES DE LA CARRETERA");

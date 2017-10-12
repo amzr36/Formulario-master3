@@ -16,7 +16,7 @@ public class BaseDatos extends SQLiteOpenHelper {
     private static final int VERSION_BASEDATOS = 1;
 
     // Nombre de nuestro archivo de base de datos
-    private static final String NOMBRE_BASEDATOS = "basedatos.db";
+    private static final String NOMBRE_BASEDATOS = "InspeccionPavimentos.db";
 
 
 
@@ -32,7 +32,7 @@ public class BaseDatos extends SQLiteOpenHelper {
         db.execSQL(Utilidades.SEGMENTOFLEX.CREAR_TABLA_SEGMENTO);
         db.execSQL(Utilidades.PATOLOGIAFLEX.CREAR_TABLA_PATOLOGIA);
         db.execSQL (Utilidades.SEGMENTORIGI.CREAR_TABLA_SEGMENTO);
-        db.execSQL(Utilidades.CREAR_TABLA_FOTO);
+        db.execSQL(Utilidades.FOTOFLEX.CREAR_TABLA_FOTO);
 
     }
 
@@ -42,7 +42,7 @@ public class BaseDatos extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.SEGMENTOFLEX.TABLA_SEGMENTO);
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.PATOLOGIAFLEX.TABLA_PATOLOGIA);
         db.execSQL("DROP TABLE IF EXISTS " + Utilidades.SEGMENTORIGI.TABLA_SEGMENTO);
-        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_FOTO);
+        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.FOTOFLEX.TABLA_FOTO);
         onCreate(db);
     }
 
@@ -66,6 +66,14 @@ public class BaseDatos extends SQLiteOpenHelper {
                 null);
         return res;
     }
+
+    public Cursor getfotoFLex() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select * from " + Utilidades.FOTOFLEX.TABLA_FOTO + " ",
+                null);
+        return res;
+    }
+
 
 
 }

@@ -9,7 +9,7 @@ import android.provider.BaseColumns;
 public class Utilidades {
 
 
-    public static abstract class CARRETERA implements BaseColumns{
+    public static abstract class CARRETERA implements BaseColumns {
         //Constantes tabla Carretera
         public static final String TABLA_CARRETERA="carretera";
         public static final String CAMPO_ID_CARRETERA="id";
@@ -69,10 +69,13 @@ public class Utilidades {
     public static abstract class PATOLOGIAFLEX implements BaseColumns {
 
         //Constantes tabla patologia
-        public static final String TABLA_PATOLOGIA = "patologia";
+        public static final String TABLA_PATOLOGIA = "patologia_flex";
         public static final String CAMPO_ID_PATOLOGIA = "id";
         public static final String CAMPO_ID_SEGMENTO_PATOLOGIA = "id_segmento";
         public static final String CAMPO_NOMBRE_CARRETERA_PATOLOGIA = "nom_carretera";
+        public static final String CAMPO_ABSCISA_PATOLOGIA= "abscisa_flex";
+        public static final String CAMPO_LATITUD="latitud";
+        public static final String CAMPO_LONGITUD="longitud";
         public static final String CAMPO_CARRIL_PATOLOGIA = "carril";
         public static final String CAMPO_DANIO_PATOLOGIA = "daño";
         public static final String CAMPO_LARGO_PATOLOGIA = "largo";
@@ -85,12 +88,14 @@ public class Utilidades {
 
         // Sentencia SQL para la creación de una tabla
         public static final String CREAR_TABLA_PATOLOGIA = "CREATE TABLE " + TABLA_PATOLOGIA +
-                " (" + CAMPO_ID_PATOLOGIA + " INTEGER PRIMARY KEY AUTOINCREMENT, " + CAMPO_NOMBRE_CARRETERA_PATOLOGIA + " TEXT," + CAMPO_ID_SEGMENTO_PATOLOGIA + " INTEGER,"
-                + CAMPO_DANIO_PATOLOGIA + " TEXT ," + CAMPO_CARRIL_PATOLOGIA + " TEXT ," + CAMPO_LARGO_PATOLOGIA + " TEXT," + CAMPO_ANCHO_PATOLOGIA + " TEXT,"
-                + CAMPO_LARGO_REPARACION + " TEXT," + CAMPO_ANCHO_REPARACION + " TEXT," + CAMPO_ACLARACIONES + " TEXT," + CAMPO_FOTO_DANIO + " TEXT)";
+                " (" + CAMPO_ID_PATOLOGIA + " INTEGER PRIMARY KEY AUTOINCREMENT, " + CAMPO_NOMBRE_CARRETERA_PATOLOGIA + " TEXT,"+ CAMPO_ABSCISA_PATOLOGIA + " TEXT,"+
+                CAMPO_LATITUD + " TEXT,"+ CAMPO_LONGITUD+ " TEXT," + CAMPO_ID_SEGMENTO_PATOLOGIA + " INTEGER,"+ CAMPO_DANIO_PATOLOGIA + " TEXT ," +
+                CAMPO_CARRIL_PATOLOGIA + " TEXT ," + CAMPO_LARGO_PATOLOGIA + " TEXT," + CAMPO_ANCHO_PATOLOGIA + " TEXT,"+ CAMPO_LARGO_REPARACION + " TEXT," +
+                CAMPO_ANCHO_REPARACION + " TEXT," + CAMPO_ACLARACIONES + " TEXT," + CAMPO_FOTO_DANIO + " TEXT)";
     }
 
 
+    public static abstract class FOTOFLEX implements BaseColumns {
         public static final String TABLA_FOTO = "fotos";
         public static final String CAMPO_ID_FOTO = "id_foto";
         public static final String CAMPO_NOMBRE_CARRETERA_FOTO = "nombreCarretera_foto";
@@ -102,6 +107,7 @@ public class Utilidades {
         public static final String CREAR_TABLA_FOTO = "CREATE TABLE " + TABLA_FOTO +
                 " (" + CAMPO_ID_FOTO + " INTEGER PRIMARY KEY AUTOINCREMENT, " + CAMPO_NOMBRE_CARRETERA_FOTO + " TEXT ," + CAMPO_ID_SEGMENTO_FOTO + " TEXT,"
                 + CAMPO_ID_PATOLOGIA_FOTO + " TEXT)";
+    }
 
 
 }

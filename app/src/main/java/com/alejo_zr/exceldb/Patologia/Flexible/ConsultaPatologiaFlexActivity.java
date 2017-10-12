@@ -20,9 +20,10 @@ import java.util.ArrayList;
 
 public class ConsultaPatologiaFlexActivity extends AppCompatActivity {
 
-    ListView listViewPatologiasFlex;
-    ArrayList<String> listaInformacionPatologiasFlex;
-    ArrayList<PatoFlex> listaPatologiasFlex;
+    private ListView listViewPatologiasFlex;
+    private ArrayList<String> listaInformacionPatologiasFlex;
+    private ArrayList<PatoFlex> listaPatologiasFlex;
+    private ArrayList<Integer> listaIdPatoFlex;
 
     BaseDatos baseDatos;
     TextView tvnomCarretera_consultar_patoFlex,tvIdSegmento_consultar_patoflex;
@@ -54,7 +55,7 @@ public class ConsultaPatologiaFlexActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int posS, long l) {
 
 
-                PatoFlex patologia=listaPatologiasFlex.get(posS);
+                PatoFlex patologia=listaPatologiasFlex.get(listaIdPatoFlex.get(posS));
                 Intent intent=new Intent(ConsultaPatologiaFlexActivity.this, PatologiaFlexActivity.class);
 
                 Bundle bundle=new Bundle();
@@ -67,6 +68,45 @@ public class ConsultaPatologiaFlexActivity extends AppCompatActivity {
             }
         });
     }
+    protected void onStart() {
+        super.onStart();
+
+        baseDatos=new BaseDatos(this);
+        listViewPatologiasFlex = (ListView) findViewById(R.id.listViewPatologiaFlex);
+        tvnomCarretera_consultar_patoFlex = (TextView) findViewById(R.id.tvnomCarretera_consultar_patoFlex);
+        tvIdSegmento_consultar_patoflex = (TextView) findViewById(R.id.tvIdSegmento_consultar_patoflex);
+
+        Bundle bundle = getIntent().getExtras();
+        String dato_nom = bundle.getString("tv_nombre_carretera_segmento").toString();
+        String id_segmento = bundle.getString("tv_id_segmento").toString();
+        tvnomCarretera_consultar_patoFlex.setText(dato_nom);
+        tvIdSegmento_consultar_patoflex.setText(id_segmento);
+
+
+        consultarListaPatologias();
+
+        ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_list_item_1,listaInformacionPatologiasFlex);
+        listViewPatologiasFlex.setAdapter(adaptador);
+
+        listViewPatologiasFlex.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int posS, long l) {
+
+
+                PatoFlex patologia=listaPatologiasFlex.get(listaIdPatoFlex.get(posS));
+                Intent intent=new Intent(ConsultaPatologiaFlexActivity.this, PatologiaFlexActivity.class);
+
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("patologia",patologia);
+
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+
+            }
+        });
+    }
+
 
     private void consultarListaPatologias() {
 
@@ -101,6 +141,7 @@ public class ConsultaPatologiaFlexActivity extends AppCompatActivity {
     private void obtenerLista() {
 
         listaInformacionPatologiasFlex = new ArrayList<String>();
+        listaIdPatoFlex = new ArrayList<Integer>();
 
         for (int i = 0; i < listaPatologiasFlex.size(); i++) {
             boolean nomCarretera = tvnomCarretera_consultar_patoFlex.getText().toString().equals(listaPatologiasFlex.get(i).getNombre_carretera_patoFlex());
@@ -110,12 +151,11 @@ public class ConsultaPatologiaFlexActivity extends AppCompatActivity {
                     listaInformacionPatologiasFlex.add("Carretera: " + listaPatologiasFlex.get(i).getNombre_carretera_patoFlex() + "- Daño: " + listaPatologiasFlex.get(i).getCarril());
                     /**Corregir que el ´getDanio´efectivamente muestre el daño
                      que se registro**/
+                    listaIdPatoFlex.add(listaPatologiasFlex.get(i).getId_patoFlex()-1);
                 }else{
-                    listaInformacionPatologiasFlex.add("No es de el segmento de la carretera");
+                    //listaInformacionPatologiasFlex.add("No es de el segmento de la carretera");
                 }
 
-            }else{
-                listaInformacionPatologiasFlex.add("No es de la carretera");
             }
         }
 
