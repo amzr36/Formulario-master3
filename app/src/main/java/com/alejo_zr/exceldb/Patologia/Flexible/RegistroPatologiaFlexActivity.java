@@ -1,5 +1,7 @@
 package com.alejo_zr.exceldb.Patologia.Flexible;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -7,6 +9,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
@@ -16,6 +21,7 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -48,18 +54,18 @@ public class RegistroPatologiaFlexActivity extends AppCompatActivity {
     final int COD_SELECCIONA=10;
     final int COD_FOTO=20;
 
-    Button btnRegistrarPatologia;
-    ImageButton botonCargar;
-    ImageView imagen;
-    String path;
-    String idFotoFlex;
+    private Button btnRegistrarPatologia;
+    private ImageButton botonCargar;
+    private ImageView imagen;
+    private String path;
+    private String idFotoFlex;
 
-    Spinner spinnerPatoFlex;
-    TextView tv_nombre_carretera_patologia,tv_id_segmento_patologia,tv_foto_danio,tv_idFotoFlex;
-    TextInputLayout input_campoAbscisaFlex;
-    EditText campoCarrilPato, campoDanioPato, campoLargoDanio, campoAnchoDanio, campoLargoRepa, campoAnchoRepa, campoAclaracion,campoAbscisaFlex,
-            campoLatitudPatoFlex,campolongitudPatoFlex;
-    String[] tipoDanio = {"Seleccione el tipo de Daño", "Fisuras longitudinales y transversales", "Fisura longitudinal en junta de construcción",
+    private Spinner spinnerPatoFlex;
+    private TextView tv_nombre_carretera_patologia,tv_id_segmento_patologia_flex,tv_foto_danio,tv_idFotoFlex;
+    private TextInputLayout input_campoAbscisaFlex;
+    private EditText campoCarrilPato, campoDanioPato, campoLargoDanio, campoAnchoDanio, campoLargoRepa, campoAnchoRepa, campoAclaracion,campoAbscisaFlex,
+            campoLatitudPatoFlex,campoLongitudPatoFlex;
+    private String[] tipoDanio = {"Seleccione el tipo de Daño", "Fisuras longitudinales y transversales", "Fisura longitudinal en junta de construcción",
             "Fisuras por reflexión de juntas o grietas en placas de concreto", "Fisuras en medialuna", "Fisuras de borde", "Fisuras en bloque", "Piel de cocotrilo",
             "Fisuración por desplazamiento de capas", "Fisuración incipiente", "Ondulación", "Abultamiento", "Hundimiento", "Ahuellamiento", "Descascaramiento",
             "Baches", "Parche", "Desgaste superficial", "Perdida de agregado", "Pulimento del agregado", "Cabezas duras", "Exudación", "Surcos",
@@ -88,10 +94,11 @@ public class RegistroPatologiaFlexActivity extends AppCompatActivity {
         campoLargoRepa = (EditText) findViewById(R.id.campoLargoRepa);
         campoAnchoRepa = (EditText) findViewById(R.id.campoAnchoRepa);
         campoAclaracion = (EditText) findViewById(R.id.campoAclaraciones);
+        campoAbscisaFlex = (EditText) findViewById(R.id.campoAbscisaFlex);
         campoLatitudPatoFlex = (EditText) findViewById(R.id.campoLatitudPatoFlex);
-        campolongitudPatoFlex = (EditText) findViewById(R.id.campolongitudPatoFlex);
+        campoLongitudPatoFlex = (EditText) findViewById(R.id.campolongitudPatoFlex);
         tv_nombre_carretera_patologia = (TextView) findViewById(R.id.tv_nombre_carretera_patologia_flex);
-        tv_id_segmento_patologia = (TextView) findViewById(R.id.tv_id_segmento_patologia_flex);
+        tv_id_segmento_patologia_flex = (TextView) findViewById(R.id.tv_id_segmento_patologia_flex_registro);
         tv_foto_danio = (TextView) findViewById(R.id.tv_foto_danio);
         tv_idFotoFlex = (TextView) findViewById(R.id.tv_idFotoFlex);
 
@@ -99,7 +106,7 @@ public class RegistroPatologiaFlexActivity extends AppCompatActivity {
         String dato_nom_carretera = bundle.getString("nom_carretera_segmento");
         String id_segmento = bundle.getString("id_segmento");
         tv_nombre_carretera_patologia.setText(dato_nom_carretera);
-        tv_id_segmento_patologia.setText(id_segmento);
+        tv_id_segmento_patologia_flex.setText(id_segmento);
 
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line, tipoDanio);
@@ -212,17 +219,20 @@ public class RegistroPatologiaFlexActivity extends AppCompatActivity {
 
             case R.id.btnRegistroPatologia:
                 Toast.makeText(getApplicationContext(),"Se registro el Daño: "+campoDanioPato.getText().toString(),Toast.LENGTH_SHORT).show();
-                registrarSegmento();
+                registrarPatoFlex();
                 break;
             case R.id.btnDanio:
                 guardarFotografia();
                 tomarFotografia();
                 break;
+            case R.id.btnObtenerCoordenadasPatoFlex:
+                obtenerCoordenadas();
+                break;
         }
 
     }
 
-    private void registrarSegmento() {
+    private void registrarPatoFlex() {
 
         BaseDatos bd=new BaseDatos(this);
 
@@ -230,19 +240,18 @@ public class RegistroPatologiaFlexActivity extends AppCompatActivity {
 
 
         String insert="INSERT INTO "+ Utilidades.PATOLOGIAFLEX.TABLA_PATOLOGIA
-                +" ( " +Utilidades.PATOLOGIAFLEX.CAMPO_NOMBRE_CARRETERA_PATOLOGIA+","+Utilidades.PATOLOGIAFLEX.CAMPO_ID_SEGMENTO_PATOLOGIA+","+Utilidades.PATOLOGIAFLEX.CAMPO_ABSCISA_PATOLOGIA+"' , '"
-                +Utilidades.PATOLOGIAFLEX.CAMPO_LATITUD+"' , '"+Utilidades.PATOLOGIAFLEX.CAMPO_LONGITUD+"' , '"+Utilidades.PATOLOGIAFLEX.CAMPO_CARRIL_PATOLOGIA+","+
+                +" ( " +Utilidades.PATOLOGIAFLEX.CAMPO_NOMBRE_CARRETERA_PATOLOGIA+","+Utilidades.PATOLOGIAFLEX.CAMPO_ID_SEGMENTO_PATOLOGIA+","+
+                Utilidades.PATOLOGIAFLEX.CAMPO_ABSCISA_PATOLOGIA+","+Utilidades.PATOLOGIAFLEX.CAMPO_LATITUD+","+Utilidades.PATOLOGIAFLEX.CAMPO_LONGITUD+","+Utilidades.PATOLOGIAFLEX.CAMPO_CARRIL_PATOLOGIA+","+
                 Utilidades.PATOLOGIAFLEX.CAMPO_DANIO_PATOLOGIA+","+Utilidades.PATOLOGIAFLEX.CAMPO_LARGO_PATOLOGIA+","+Utilidades.PATOLOGIAFLEX.CAMPO_ANCHO_PATOLOGIA+
                 ","+Utilidades.PATOLOGIAFLEX.CAMPO_LARGO_REPARACION+","+Utilidades.PATOLOGIAFLEX.CAMPO_ANCHO_REPARACION+","+Utilidades.PATOLOGIAFLEX.CAMPO_ACLARACIONES+","
                 +Utilidades.PATOLOGIAFLEX.CAMPO_FOTO_DANIO+")" +
-                " VALUES ('"+tv_nombre_carretera_patologia.getText().toString()+"' , '"+tv_id_segmento_patologia.getText().toString()+"' , '"+campoAbscisaFlex.getText().toString()+"' , '"
-                +campoLatitudPatoFlex.getText().toString()+"' , '"+campolongitudPatoFlex.getText().toString()+"' , '"+campoCarrilPato.getText().toString()+
-                "' , '"+campoDanioPato.getText().toString()+"' , '"+campoLargoDanio.getText().toString()+"' , '"+campoAnchoDanio.getText().toString()+"' , '"+
-                campoLargoRepa.getText().toString()+"' , '"+campoAnchoRepa.getText().toString()+"' , '"+campoAclaracion.getText().toString()+"' , '"+
-                tv_foto_danio.getText().toString()+"')";
+                " VALUES ('"+tv_nombre_carretera_patologia.getText().toString()+"' , '"+tv_id_segmento_patologia_flex.getText().toString()+"' , '"+
+                campoAbscisaFlex.getText().toString()+"' , '"+campoLatitudPatoFlex.getText().toString()+"' , '"+campoLongitudPatoFlex.getText().toString()+"' , '"
+                +campoCarrilPato.getText().toString()+"' , '"+campoDanioPato.getText().toString()+"' , '"+campoLargoDanio.getText().toString()+"' , '"
+                +campoAnchoDanio.getText().toString()+"' , '"+campoLargoRepa.getText().toString()+"' , '"+campoAnchoRepa.getText().toString()+"' , '"
+                +campoAclaracion.getText().toString()+"' , '"+tv_foto_danio.getText().toString()+"')";
 
         db.execSQL(insert);
-        Toast.makeText(getApplicationContext(),R.string.regisPatologias,Toast.LENGTH_SHORT).show();
 
         db.close();
 
@@ -284,7 +293,7 @@ public class RegistroPatologiaFlexActivity extends AppCompatActivity {
 
         String insert="INSERT INTO "+ Utilidades.FOTOFLEX.TABLA_FOTO
                 +" ( " +Utilidades.FOTOFLEX.CAMPO_NOMBRE_CARRETERA_FOTO+","+Utilidades.FOTOFLEX.CAMPO_ID_SEGMENTO_FOTO+")" +
-                " VALUES ('"+tv_nombre_carretera_patologia.getText().toString()+"' , '"+tv_id_segmento_patologia.getText().toString()+"')";
+                " VALUES ('"+tv_nombre_carretera_patologia.getText().toString()+"' , '"+tv_id_segmento_patologia_flex.getText().toString()+"')";
 
 
         db.execSQL(insert);
@@ -312,7 +321,7 @@ public class RegistroPatologiaFlexActivity extends AppCompatActivity {
         }
 
         if(isCreada==true){
-            nombreImagen=("Carretera_"+tv_nombre_carretera_patologia.getText().toString()+"_Segmento_"+tv_id_segmento_patologia.getText().toString()+"_Foto_"+tv_idFotoFlex.getText().toString()+".png");
+            nombreImagen=("Carretera_"+tv_nombre_carretera_patologia.getText().toString()+"_Segmento_"+tv_id_segmento_patologia_flex.getText().toString()+"_Foto_"+tv_idFotoFlex.getText().toString()+".png");
         }
 
 
@@ -427,5 +436,76 @@ public class RegistroPatologiaFlexActivity extends AppCompatActivity {
             }
         });
         alertOpciones.show();
+    }
+    private void obtenerCoordenadas() {
+        LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Localizacion Local = new Localizacion();
+        Local.setRegistroPatologiaFlexActivity(this);
+        final boolean gpsEnabled = mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        if (!gpsEnabled) {
+            Intent settingsIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivity(settingsIntent);
+        }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000);
+            return;
+        }
+        mlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 50, (LocationListener) Local);
+        mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 50, (LocationListener) Local);
+
+
+    }
+
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == 1000) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                obtenerCoordenadas();
+                return;
+            }
+        }
+    }
+
+    private class Localizacion implements LocationListener {
+        RegistroPatologiaFlexActivity registroPatologiaFlexActivity;
+
+        public RegistroPatologiaFlexActivity getRegistroPatologiaFlexActivity() {
+            return registroPatologiaFlexActivity;
+        }
+
+        public void setRegistroPatologiaFlexActivity(RegistroPatologiaFlexActivity registroPatologiaFlexActivity) {
+            this.registroPatologiaFlexActivity = registroPatologiaFlexActivity;
+        }
+
+        @Override
+        public void onLocationChanged(Location loc) {
+            // Este metodo se ejecuta cada vez que el GPS recibe nuevas coordenadas
+            // debido a la deteccion de un cambio de ubicacion
+
+            loc.getLatitude();
+            loc.getLongitude();
+
+            String latitud = ""+ loc.getLatitude();// + "\n Long = " + loc.getLongitude();
+            String longitud = ""+loc.getLongitude();
+            campoLatitudPatoFlex.setText(latitud);
+            campoLongitudPatoFlex.setText(longitud);
+
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+            // Este metodo se ejecuta cuando el GPS es desactivado
+            //mensaje1.setText("GPS Desactivado");
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+            // Este metodo se ejecuta cuando el GPS es activado
+            //mensaje1.setText("GPS Activado");
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+
+        }
     }
 }

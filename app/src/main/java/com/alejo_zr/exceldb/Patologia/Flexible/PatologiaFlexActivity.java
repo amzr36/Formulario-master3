@@ -11,7 +11,8 @@ import com.alejo_zr.exceldb.entidades.PatoFlex;
 
 public class PatologiaFlexActivity extends AppCompatActivity {
 
-    TextView tvIdDaño,tvIdSegmento,tvNombreCarreteraPatologiaActivity,tvCarrilDanio,tvAclaraciones,tvanchRepa,tvlarRepa,tvdanionombre,tvlarDanio,tvanchDanio;
+    private TextView tvIdDaño,tvIdSegmento,tvNombreCarreteraPatologiaActivity,tvCarrilDanio,tvAclaraciones,tvanchRepa,tvlarRepa,tvdanionombre,tvlarDanio,tvanchDanio,
+            tvAbscisaPatoFlexActivity,tvLatPatoFlexActivity,tvLongFlexActivity;
 
 
 
@@ -20,6 +21,10 @@ public class PatologiaFlexActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patologia_flex);
 
+        tvNombreCarreteraPatologiaActivity = (TextView) findViewById(R.id.tvNombreCarreteraPatologiaFlexActivity);
+        tvAbscisaPatoFlexActivity = (TextView) findViewById(R.id.tvAbscisaPatoFlexActivity);
+        tvLatPatoFlexActivity= (TextView) findViewById(R.id.tvLatPatoFlexActivity);
+        tvLongFlexActivity= (TextView) findViewById(R.id.tvLongFlexActivity);
         tvCarrilDanio= (TextView) findViewById(R.id.tvCarrilDanio);
         tvAclaraciones=(TextView) findViewById(R.id.tvAclaraciones);
         tvanchRepa = (TextView) findViewById(R.id.tvanchorepa);
@@ -27,9 +32,8 @@ public class PatologiaFlexActivity extends AppCompatActivity {
         tvdanionombre = (TextView) findViewById(R.id.tvdanionombre);
         tvlarDanio = (TextView) findViewById(R.id.tvlarDanio);
         tvanchDanio = (TextView) findViewById(R.id.tvanchDanio);
-        tvIdSegmento = (TextView) findViewById(R.id.tvIdSegmento);
-        tvNombreCarreteraPatologiaActivity = (TextView) findViewById(R.id.tvNombreCarreteraPatologiaActivity);
-        tvIdDaño=(TextView) findViewById(R.id.tvIdDaño);
+        tvIdSegmento = (TextView) findViewById(R.id.tvIdsegpatoflexAct);
+
 
 
         Bundle patologiaEnviado=getIntent().getExtras();
@@ -37,6 +41,45 @@ public class PatologiaFlexActivity extends AppCompatActivity {
 
         if(patologiaEnviado!=null){
             patoFlex = (PatoFlex) patologiaEnviado.getSerializable("patologia");
+            tvAbscisaPatoFlexActivity.setText(patoFlex.getAbscisa().toString());
+            tvLatPatoFlexActivity.setText(patoFlex.getLatitud().toString());
+            tvLongFlexActivity.setText(patoFlex.getLongitud().toString());
+            tvCarrilDanio.setText(patoFlex.getCarril().toString());
+            tvAclaraciones.setText(patoFlex.getAclaraciones().toString());
+            tvanchRepa.setText(patoFlex.getAnchoRepa().toString());
+            tvlarRepa.setText(patoFlex.getLargoRepa().toString());
+            tvdanionombre.setText(patoFlex.getDanio().toString());
+            tvanchDanio.setText(patoFlex.getAnchoDanio().toString());
+            tvIdSegmento.setText(patoFlex.getId_segmento_patoFlex().toString());
+            tvNombreCarreteraPatologiaActivity.setText(patoFlex.getNombre_carretera_patoFlex().toString());
+            tvIdDaño.setText(patoFlex.getId_patoFlex().toString());
+
+        }
+    }
+
+    protected void onStart() {
+        super.onStart();
+        tvNombreCarreteraPatologiaActivity = (TextView) findViewById(R.id.tvNombreCarreteraPatologiaFlexActivity);
+        tvAbscisaPatoFlexActivity = (TextView) findViewById(R.id.tvAbscisaPatoFlexActivity);
+        tvLatPatoFlexActivity= (TextView) findViewById(R.id.tvLatPatoFlexActivity);
+        tvLongFlexActivity= (TextView) findViewById(R.id.tvLongFlexActivity);
+        tvCarrilDanio= (TextView) findViewById(R.id.tvCarrilDanio);
+        tvAclaraciones=(TextView) findViewById(R.id.tvAclaraciones);
+        tvanchRepa = (TextView) findViewById(R.id.tvanchorepa);
+        tvlarRepa = (TextView) findViewById(R.id.tvlarRepa);
+        tvdanionombre = (TextView) findViewById(R.id.tvdanionombre);
+        tvlarDanio = (TextView) findViewById(R.id.tvlarDanio);
+        tvanchDanio = (TextView) findViewById(R.id.tvanchDanio);
+        tvIdSegmento = (TextView) findViewById(R.id.tvIdsegpatoflexAct);
+
+        Bundle patologiaEnviado=getIntent().getExtras();
+        PatoFlex patoFlex=null;
+
+        if(patologiaEnviado!=null){
+            patoFlex = (PatoFlex) patologiaEnviado.getSerializable("patologia");
+            tvAbscisaPatoFlexActivity.setText(patoFlex.getAbscisa().toString());
+            tvLatPatoFlexActivity.setText(patoFlex.getLatitud().toString());
+            tvLongFlexActivity.setText(patoFlex.getLongitud().toString());
             tvCarrilDanio.setText(patoFlex.getCarril().toString());
             tvAclaraciones.setText(patoFlex.getAclaraciones().toString());
             tvanchRepa.setText(patoFlex.getAnchoRepa().toString());
@@ -57,6 +100,9 @@ public class PatologiaFlexActivity extends AppCompatActivity {
 
             case R.id.btnEditarPatologia:
                 intent = new Intent(PatologiaFlexActivity.this, EditarPatologiaFlexActivity.class);
+                intent.putExtra("tvAbscisa",tvAbscisaPatoFlexActivity.getText().toString());
+                intent.putExtra("tvLatitud",tvLatPatoFlexActivity.getText().toString());
+                intent.putExtra("tvLongitud",tvLongFlexActivity.getText().toString());
                 intent.putExtra("tvCarrilDanio",tvCarrilDanio.getText().toString());
                 intent.putExtra("tvAclaraciones",tvAclaraciones.getText().toString());
                 intent.putExtra("tvanchRepa", tvanchRepa.getText().toString());

@@ -2,9 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.alejo_zr.exceldb">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -39,7 +46,7 @@
         <activity
             android:name=".Segmento.Flexible.RegistroSegmentoFlexActivity"
             android:label="@string/regisSeg"
-            android:parentActivityName=".Carretera.ConsultarCarreteraActivity" />
+            android:parentActivityName=".Segmento.Flexible.SegmentoFlexActivity" />
         <activity
             android:name=".Segmento.Flexible.ConsultarSegmentoFlexActivity"
             android:label="@string/consulSeg"
@@ -56,8 +63,11 @@
         <activity
             android:name=".Carretera.ConsulCarreteraActivity"
             android:label="@string/consul" />
-        <activity android:name=".Patologia.Flexible.RegistroPatologiaFlexActivity" />
-        <activity android:name=".Patologia.Flexible.ConsultaPatologiaFlexActivity" />
+        <activity android:name=".Patologia.Flexible.RegistroPatologiaFlexActivity"
+            android:parentActivityName=".Segmento.Flexible.SegmentoFlexActivity"
+            android:label="@string/patoFlex"/>
+        <activity android:name=".Patologia.Flexible.ConsultaPatologiaFlexActivity"
+            android:parentActivityName=".Segmento.Flexible.SegmentoFlexActivity"/>
         <activity android:name=".Patologia.Flexible.PatologiaFlexActivity" />
 
         <provider
@@ -70,13 +80,12 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".Patologia.Flexible.EditarPatologiaActivity" />
-        <activity android:name=".ConsultarSegmentoFlexActivity" />
+        <activity android:name=".Patologia.Flexible.EditarPatologiaFlexActivity" />
         <activity android:name=".Segmento.Rigido.ConsultarSegmentoRigiActivity" />
         <activity android:name=".Segmento.Rigido.SegmentoRigiActivity" />
         <activity android:name=".Segmento.Rigido.RegistroSegmentoRigiActivity" />
         <activity android:name=".Segmento.Rigido.EditarSegmentoRigiActivity" />
-        <activity android:name=".Patologia.Flexible.EditarPatologiaFlexActivity"></activity>
+
     </application>
 
 </manifest>

@@ -11,6 +11,9 @@ public class PatoFlex implements Serializable {
     private Integer id_patoFlex;
     private String nombre_carretera_patoFlex;
     private String id_segmento_patoFlex;
+    private String abscisa;
+    private String latitud;
+    private String longitud;
     private String carril;
     private String danio;
     private String largoDanio;
@@ -20,11 +23,14 @@ public class PatoFlex implements Serializable {
     private String aclaraciones;
     private String foto;
 
-    public PatoFlex(Integer id_patoFlex, String nombre_carretera_patoFlex, String id_segmento_patoFlex, String carril, String danio, String largoDanio,
-                    String anchoDanio, String largoRepa, String anchoRepa, String aclaraciones, String foto) {
+    public PatoFlex(Integer id_patoFlex, String nombre_carretera_patoFlex, String id_segmento_patoFlex, String abscisa, String latitud, String longitud,
+                    String carril, String danio, String largoDanio, String anchoDanio, String largoRepa, String anchoRepa, String aclaraciones, String foto) {
         this.id_patoFlex = id_patoFlex;
         this.nombre_carretera_patoFlex = nombre_carretera_patoFlex;
         this.id_segmento_patoFlex = id_segmento_patoFlex;
+        this.abscisa = abscisa;
+        this.latitud = latitud;
+        this.longitud = longitud;
         this.carril = carril;
         this.danio = danio;
         this.largoDanio = largoDanio;
@@ -36,11 +42,6 @@ public class PatoFlex implements Serializable {
     }
 
     public PatoFlex() {
-
-    }
-
-    private void PatoFlex(Integer ID_patoFlex, String Nombre_carretera_patoFlex, String ID_segmento_patoFlex, String CArril, String DAnio, String LArgoDanio,
-                          String ANchoDanio, String LArgoRepa, String ANchoRepa, String AClaraciones, String FOto){
 
     }
 
@@ -66,6 +67,30 @@ public class PatoFlex implements Serializable {
 
     public void setId_segmento_patoFlex(String id_segmento_patoFlex) {
         this.id_segmento_patoFlex = id_segmento_patoFlex;
+    }
+
+    public String getAbscisa() {
+        return abscisa;
+    }
+
+    public void setAbscisa(String abscisa) {
+        this.abscisa = abscisa;
+    }
+
+    public String getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(String latitud) {
+        this.latitud = latitud;
+    }
+
+    public String getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(String longitud) {
+        this.longitud = longitud;
     }
 
     public String getCarril() {

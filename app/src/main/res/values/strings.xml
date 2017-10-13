@@ -2,7 +2,6 @@
 
     <string name="app_name">ExcelDB</string>
     <string name="espelosa">Espesor Losa</string>
-
     <string name="regis">REGISTRAR CARRETERA</string>
     <string name="consul">CONSULTAR CARRETERA</string>
     <string name="regissegFlex">REGISTRAR SEGMENTO FLEXIBLE</string>
@@ -42,6 +41,7 @@
     <string name="ancho">Ancho (m):</string>
     <string name="carril">Carril</string>
     <string name="patologia">Patología</string>
+    <string name="codPato">Codígo daño</string>
     <string name="danio">Dimensiones daño (m)</string>
     <string name="danio_activity">Daño</string>
     <string name="largo">Largo</string>
@@ -61,6 +61,11 @@
     <string name="validarAnchoCarril">Ingrese el ancho del carril</string>
     <string name="validarAnchoBerma">Ingrese el ancho de la berma</string>
     <string name="validarPri">Ingrese el PRI</string>
+    <string name="abscisa">Abscisa</string>
+    <string name="coordenadas">Obtener Coordenadas</string>
+    <string name="latitud">Latitud</string>
+    <string name="longitud">Longitud</string>
+    <string name="patoFlex">Registro Daños Pav. Flex.</string>
 
     <!--Daños Pavimento Flexible!-->
     <string name="fisuras_long_transversales">Fisuras Longitudinales y transversales</string>

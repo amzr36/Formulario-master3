@@ -31,7 +31,7 @@
                 android:text="@string/segmento"
                 android:textStyle="bold|italic"/>
             <TextView
-                android:id="@+id/tv_id_segmento_patologia_flex"
+                android:id="@+id/tv_id_segmento_patologia_flex_registro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -68,6 +68,7 @@
                 android:text="@string/coordenadas"
                 android:textStyle="italic"
                 android:textSize="15dp"
+                android:onClick="onClick"
                 />
 
         </LinearLayout>
@@ -146,7 +147,7 @@
             android:id="@+id/campoDanioPato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/patologia"/>
+            android:hint="@string/codPato"/>
 
         <TextView
             android:id="@+id/tvDimenDanio"

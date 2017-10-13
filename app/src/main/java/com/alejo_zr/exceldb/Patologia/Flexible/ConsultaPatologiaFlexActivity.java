@@ -25,8 +25,8 @@ public class ConsultaPatologiaFlexActivity extends AppCompatActivity {
     private ArrayList<PatoFlex> listaPatologiasFlex;
     private ArrayList<Integer> listaIdPatoFlex;
 
-    BaseDatos baseDatos;
-    TextView tvnomCarretera_consultar_patoFlex,tvIdSegmento_consultar_patoflex;
+    private BaseDatos baseDatos;
+    private TextView tvnomCarretera_consultar_patoFlex,tvIdSegmento_consultar_patoflex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,16 +120,19 @@ public class ConsultaPatologiaFlexActivity extends AppCompatActivity {
         while(cursor.moveToNext()){
             patoFlex = new PatoFlex();
             patoFlex.setId_patoFlex(cursor.getInt(0));
-            patoFlex.setNombre_carretera_patoFlex(cursor.getString(1));
-            patoFlex.setId_segmento_patoFlex(cursor.getString(2));
-            patoFlex.setCarril(cursor.getString(3));
-            patoFlex.setDanio(cursor.getString(4));
-            patoFlex.setLargoDanio(cursor.getString(5));
-            patoFlex.setAnchoDanio(cursor.getString(6));
-            patoFlex.setLargoRepa(cursor.getString(7));
-            patoFlex.setAnchoRepa(cursor.getString(8));
-            patoFlex.setAclaraciones(cursor.getString(9));
-            patoFlex.setFoto(cursor.getString(10));
+            patoFlex.setId_segmento_patoFlex(cursor.getString(1));
+            patoFlex.setNombre_carretera_patoFlex(cursor.getString(2));
+            patoFlex.setAbscisa(cursor.getString(3));
+            patoFlex.setLatitud(cursor.getString(4));
+            patoFlex.setLongitud(cursor.getString(5));
+            patoFlex.setCarril(cursor.getString(6));
+            patoFlex.setDanio(cursor.getString(7));
+            patoFlex.setLargoDanio(cursor.getString(8));
+            patoFlex.setAnchoDanio(cursor.getString(9));
+            patoFlex.setLargoRepa(cursor.getString(10));
+            patoFlex.setAnchoRepa(cursor.getString(11));
+            patoFlex.setAclaraciones(cursor.getString(12));
+            patoFlex.setFoto(cursor.getString(13));
 
             listaPatologiasFlex.add(patoFlex);
 
@@ -145,20 +148,24 @@ public class ConsultaPatologiaFlexActivity extends AppCompatActivity {
 
         for (int i = 0; i < listaPatologiasFlex.size(); i++) {
             boolean nomCarretera = tvnomCarretera_consultar_patoFlex.getText().toString().equals(listaPatologiasFlex.get(i).getNombre_carretera_patoFlex());
-            if (nomCarretera == true) {
+
+            //if (nomCarretera == true) {
                 boolean idSeg = tvIdSegmento_consultar_patoflex.getText().toString().equals(listaPatologiasFlex.get(i).getId_segmento_patoFlex());
-                if (idSeg== true){
-                    listaInformacionPatologiasFlex.add("Carretera: " + listaPatologiasFlex.get(i).getNombre_carretera_patoFlex() + "- Daño: " + listaPatologiasFlex.get(i).getCarril());
+                //Toast.makeText(getApplicationContext(),listaPatologiasFlex.get(i).getId_segmento_patoFlex()+"-"+i+"-"+tvIdSegmento_consultar_patoflex.getText().toString(),Toast.LENGTH_SHORT).show();
+                //if (idSeg == true) {
+                    listaInformacionPatologiasFlex.add("Carretera: " + listaPatologiasFlex.get(i).getNombre_carretera_patoFlex() +"-Segmento "+listaPatologiasFlex.get(i).getId_segmento_patoFlex()+ " - Daño: " + listaPatologiasFlex.get(i).getCarril());
                     /**Corregir que el ´getDanio´efectivamente muestre el daño
                      que se registro**/
-                    listaIdPatoFlex.add(listaPatologiasFlex.get(i).getId_patoFlex()-1);
-                }else{
-                    //listaInformacionPatologiasFlex.add("No es de el segmento de la carretera");
+                    listaIdPatoFlex.add(listaPatologiasFlex.get(i).getId_patoFlex());
+                //} else {
+                /*    listaInformacionPatologiasFlex.add("No es de el segmento de la carretera");
                 }
 
-            }
+            } else {
+                listaInformacionPatologiasFlex.add("No es de la carretera");
+            }*/
+
+
         }
-
-
     }
 }
