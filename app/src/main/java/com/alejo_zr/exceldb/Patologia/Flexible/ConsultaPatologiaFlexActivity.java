@@ -149,21 +149,17 @@ public class ConsultaPatologiaFlexActivity extends AppCompatActivity {
         for (int i = 0; i < listaPatologiasFlex.size(); i++) {
             boolean nomCarretera = tvnomCarretera_consultar_patoFlex.getText().toString().equals(listaPatologiasFlex.get(i).getNombre_carretera_patoFlex());
 
-            //if (nomCarretera == true) {
+            if (nomCarretera == true) {
                 boolean idSeg = tvIdSegmento_consultar_patoflex.getText().toString().equals(listaPatologiasFlex.get(i).getId_segmento_patoFlex());
-                //Toast.makeText(getApplicationContext(),listaPatologiasFlex.get(i).getId_segmento_patoFlex()+"-"+i+"-"+tvIdSegmento_consultar_patoflex.getText().toString(),Toast.LENGTH_SHORT).show();
-                //if (idSeg == true) {
+
+                if (idSeg == true) {
                     listaInformacionPatologiasFlex.add("Carretera: " + listaPatologiasFlex.get(i).getNombre_carretera_patoFlex() +"-Segmento "+listaPatologiasFlex.get(i).getId_segmento_patoFlex()+ " - Daño: " + listaPatologiasFlex.get(i).getCarril());
                     /**Corregir que el ´getDanio´efectivamente muestre el daño
                      que se registro**/
                     listaIdPatoFlex.add(listaPatologiasFlex.get(i).getId_patoFlex());
-                //} else {
-                /*    listaInformacionPatologiasFlex.add("No es de el segmento de la carretera");
                 }
 
-            } else {
-                listaInformacionPatologiasFlex.add("No es de la carretera");
-            }*/
+            }
 
 
         }
