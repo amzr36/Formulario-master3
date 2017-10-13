@@ -20,7 +20,7 @@ public class PatologiaFlexActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patologia_flex);
 
-        /*
+
         tvNombreCarreteraPatologiaActivity = (TextView) findViewById(R.id.tvNombreCarreteraPatologiaFlexActivity);
         tvAbscisaPatoFlexActivity = (TextView) findViewById(R.id.tvAbscisaPatoFlexActivity);
         tvLatPatoFlexActivity= (TextView) findViewById(R.id.tvLatPatoFlexActivity);
@@ -42,7 +42,7 @@ public class PatologiaFlexActivity extends AppCompatActivity {
 
         if(patologiaEnviado!=null){
             patoFlex = (PatoFlex) patologiaEnviado.getSerializable("patologia");
-            /*tvAbscisaPatoFlexActivity.setText(patoFlex.getAbscisa().toString());
+            tvAbscisaPatoFlexActivity.setText(patoFlex.getAbscisa().toString());
             tvLatPatoFlexActivity.setText(patoFlex.getLatitud().toString());
             tvLongFlexActivity.setText(patoFlex.getLongitud().toString());
             tvCarrilDanio.setText(patoFlex.getCarril().toString());
@@ -56,14 +56,14 @@ public class PatologiaFlexActivity extends AppCompatActivity {
             tvIdDaño.setText(patoFlex.getId_patoFlex().toString());
 
         }
-        */
+
 
     }
 
     protected void onStart() {
         super.onStart();
 
-        /*
+
         tvNombreCarreteraPatologiaActivity = (TextView) findViewById(R.id.tvNombreCarreteraPatologiaFlexActivity);
         /*tvAbscisaPatoFlexActivity = (TextView) findViewById(R.id.tvAbscisaPatoFlexActivity);
         tvLatPatoFlexActivity= (TextView) findViewById(R.id.tvLatPatoFlexActivity);
