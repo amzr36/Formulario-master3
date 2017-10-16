@@ -57,9 +57,22 @@
         <activity
             android:name=".Segmento.Flexible.EditarSegmentoFlexActivity"
             android:label="@string/editarSegmento" />
-        <activity
-            android:name=".Patologia.Flexible.RegistroPatoFlexActivity"
-            android:label="@string/regisPatologias" />
+
+
+        <activity android:name=".Segmento.Rigido.ConsultarSegmentoRigiActivity"
+            android:parentActivityName=".Carretera.CarreteraActivity"
+            android:label="@string/consulSeg"/>
+        <activity android:name=".Segmento.Rigido.SegmentoRigiActivity"
+            android:label="@string/datosSegmento"/>
+        <activity android:name=".Segmento.Rigido.RegistroSegmentoRigiActivity"
+            android:parentActivityName=".Segmento.Rigido.ConsultarSegmentoRigiActivity"
+            android:label="@string/regisSeg"/>
+        <activity android:name=".Segmento.Rigido.EditarSegmentoRigiActivity"
+            android:parentActivityName=".Segmento.Rigido.SegmentoRigiActivity"
+            android:label="@string/editarSegmento"/>
+
+
+
         <activity
             android:name=".Carretera.ConsulCarreteraActivity"
             android:label="@string/consul" />
@@ -69,6 +82,8 @@
         <activity android:name=".Patologia.Flexible.ConsultaPatologiaFlexActivity"
             android:parentActivityName=".Segmento.Flexible.SegmentoFlexActivity"/>
         <activity android:name=".Patologia.Flexible.PatologiaFlexActivity" />
+
+        <activity android:name=".Patologia.Flexible.EditarPatologiaFlexActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -80,11 +95,8 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".Patologia.Flexible.EditarPatologiaFlexActivity" />
-        <activity android:name=".Segmento.Rigido.ConsultarSegmentoRigiActivity" />
-        <activity android:name=".Segmento.Rigido.SegmentoRigiActivity" />
-        <activity android:name=".Segmento.Rigido.RegistroSegmentoRigiActivity" />
-        <activity android:name=".Segmento.Rigido.EditarSegmentoRigiActivity" />
+
+
 
     </application>
 

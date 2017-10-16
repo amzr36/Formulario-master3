@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:text="@string/segmento"
             android:textSize="@dimen/subTitulo"
-            android:textStyle="italic"
+            android:textStyle="bold|italic"
             android:layout_below="@+id/tvNombreCarreteraPatologiaFlexActivity"/>
         <TextView
             android:id="@+id/tvIdSegmentoPatologiaFlexActivity"
@@ -37,9 +37,30 @@
             android:textStyle="italic"
             android:layout_marginLeft="@dimen/marginLeftTV"
             android:layout_toRightOf="@+id/tvIdsegpatoflexAct"
-
             android:layout_alignBottom="@+id/tvIdsegpatoflexAct"
             />
+
+        <TextView
+            android:id="@+id/tv_id_danio_pato_flex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/danio_activity"
+            android:textStyle="bold|italic"
+            android:textSize="@dimen/subTitulo"
+            android:layout_marginLeft="@dimen/marginLeftTV"
+            android:layout_toRightOf="@+id/tvIdSegmentoPatologiaFlexActivity"
+            android:layout_alignBottom="@+id/tvIdsegpatoflexAct"/>
+
+        <TextView
+            android:id="@+id/tvIdDañoPatoFlex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/id"
+            android:textSize="@dimen/subTitulo"
+            android:textStyle="italic"
+            android:layout_marginLeft="@dimen/marginLeftTV"
+            android:layout_toRightOf="@+id/tv_id_danio_pato_flex"
+            android:layout_alignBottom="@+id/tvIdsegpatoflexAct"/>
 
         <ImageButton
             android:id="@+id/btnEditarPatologia"
@@ -243,14 +264,14 @@
                 android:text="@string/vacio"
                 />
             <TextView
-                android:id="@+id/tvanchorepa"
+                android:id="@+id/tvanchrepa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/anchoD"
                 />
             <TextView
-                android:id="@+id/tvanchRepa"
+                android:id="@+id/tvanchoRepa_pato_flex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -274,14 +295,21 @@
             android:text="@string/vacio"
             android:layout_below="@id/aclaraciones"/>
 
-        <ImageView
-            android:id="@+id/imgDanio"
+        <TextView
+            android:id="@+id/tvDireccionPatoFlex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/tvAclaraciones"
+            android:text="@string/nombre"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:id="@+id/imgDanio_PatoFlex"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
             android:src="@drawable/img_base"
-            android:layout_below="@+id/tvAclaraciones"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/marginTop"/>
+            android:layout_alignTop="@+id/tvDireccionPatoFlex"
+            />
 
 
 

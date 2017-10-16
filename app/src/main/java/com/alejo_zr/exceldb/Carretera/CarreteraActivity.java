@@ -15,6 +15,8 @@ public class CarreteraActivity extends AppCompatActivity {
 
     private TextView tvIdCarretera,tvNomCarretera,tvNombreCarretera,tvCodigoCarretera,tvTerritorialCarretera,tvAdmonCarretera,
             tvLevantadoCarretera;
+    private String tvIdCarreteraS,tvNomCarreteraS,tvNombreCarreteraS,tvCodigoCarreteraS,tvTerritorialCarreteraS,tvAdmonCarreteraS,
+            tvLevantadoCarreteraS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +45,6 @@ public class CarreteraActivity extends AppCompatActivity {
             tvLevantadoCarretera.setText(carretera.getLevantado().toString());
 
         }
-
-
 
     }
 

@@ -136,7 +136,7 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
 
         listaInformacionSegmentos = new ArrayList<String>();
         listaIdSegmentos = new ArrayList<Integer>();
-        SegmentoFlex vectorSegmentoFlex = null;
+
 
         for (int i=0; i<listaSegmentos.size();i++){
             boolean nomCarretera = tvnomCarretera_consultar_segmentoFlex.getText().toString().equals(listaSegmentos.get(i).getNombre_carretera());

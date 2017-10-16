@@ -171,7 +171,6 @@
                     android:id="@+id/campoLargoDanio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:hint="@string/largo"/>
 
 
@@ -188,7 +187,6 @@
                     android:id="@+id/campoAnchoDanio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:hint="@string/anchoD"/>
 
             </android.support.design.widget.TextInputLayout>
@@ -212,24 +210,24 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_campoLargoRepa"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
 
                 <EditText
                     android:id="@+id/campoLargoRepa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:hint="@string/largo"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_campoAnchoRepa"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
                 <EditText
                     android:id="@+id/campoAnchoRepa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:hint="@string/anchoD"/>
             </android.support.design.widget.TextInputLayout>
 

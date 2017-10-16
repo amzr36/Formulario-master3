@@ -17,7 +17,7 @@ public class RegistroSegmentoRigiActivity extends AppCompatActivity {
 
 
     private EditText campoNCalzadas, campoNCarriles, campoEspesorLosa, campoAnchoBerma, campoPRI, campoPRF, campoComentarios;
-    private TextView tvId_Carretera_Segmento,tvNombre_Carretera_Segmento;
+    private TextView tvNombre_Carretera_Segmento;
     private TextInputLayout input_camponCalzadas,input_campoNCarriles,input_campoEspesorLosa,input_campoAnchoBerma,input_campoPRI;
 
 
@@ -35,7 +35,7 @@ public class RegistroSegmentoRigiActivity extends AppCompatActivity {
         campoPRF = (EditText) findViewById(R.id.campoPRFRigi);
         campoComentarios = (EditText) findViewById(R.id.campoComentariosRigi);
 
-        tvId_Carretera_Segmento = (TextView) findViewById(R.id.tvId_Carretera_SegmentoRigi);
+
         tvNombre_Carretera_Segmento = (TextView) findViewById(R.id.tvNombre_Carretera_SegmentoRigi);
 
         input_camponCalzadas = (TextInputLayout) findViewById(R.id.input_camponCalzadasRigi);

@@ -13,21 +13,17 @@ import android.widget.TextView;
 
 import com.alejo_zr.exceldb.BaseDatos;
 import com.alejo_zr.exceldb.R;
-import com.alejo_zr.exceldb.Segmento.Flexible.ConsultarSegmentoFlexActivity;
-import com.alejo_zr.exceldb.Segmento.Flexible.RegistroSegmentoFlexActivity;
-import com.alejo_zr.exceldb.Segmento.Flexible.SegmentoFlexActivity;
 import com.alejo_zr.exceldb.entidades.SegmentoRigi;
 import com.alejo_zr.exceldb.utilidades.Utilidades;
 
 import java.util.ArrayList;
-
-import static com.alejo_zr.exceldb.R.string.segmento;
 
 public class ConsultarSegmentoRigiActivity extends AppCompatActivity {
 
     private ListView listViewSegmentos;
     private ArrayList<String> listaInformacionSegmentos;
     private ArrayList<SegmentoRigi> listaSegmentos;
+    private ArrayList<Integer> listaIdSegmentos;
     private TextView tvnomCarretera_consultar_segmentoRigi;
 
     private BaseDatos baseDatos;
@@ -56,8 +52,8 @@ public class ConsultarSegmentoRigiActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int posS, long l) {
 
-                SegmentoRigi segmentorigi=listaSegmentos.get(posS);
-                Intent intent=new Intent(ConsultarSegmentoRigiActivity.this,SegmentoFlexActivity.class);
+                SegmentoRigi segmentorigi=listaSegmentos.get(listaIdSegmentos.get(posS));
+                Intent intent=new Intent(ConsultarSegmentoRigiActivity.this,SegmentoRigiActivity.class);
 
                 Bundle bundle=new Bundle();
                 bundle.putSerializable("segmento",segmentorigi);
@@ -89,8 +85,8 @@ public class ConsultarSegmentoRigiActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int posS, long l) {
 
-                SegmentoRigi segmentorigi=listaSegmentos.get(posS);
-                Intent intent=new Intent(ConsultarSegmentoRigiActivity.this,SegmentoFlexActivity.class);
+                SegmentoRigi segmentorigi=listaSegmentos.get(listaIdSegmentos.get(posS));
+                Intent intent=new Intent(ConsultarSegmentoRigiActivity.this,SegmentoRigiActivity.class);
 
                 Bundle bundle=new Bundle();
                 bundle.putSerializable("segmento",segmentorigi);
@@ -134,13 +130,15 @@ public class ConsultarSegmentoRigiActivity extends AppCompatActivity {
     private void obtenerLista() {
 
         listaInformacionSegmentos = new ArrayList<String>();
+        listaIdSegmentos = new ArrayList<Integer>();
 
         for (int i=0; i<listaSegmentos.size();i++){
             boolean nomCarretera = tvnomCarretera_consultar_segmentoRigi.getText().toString().equals(listaSegmentos.get(i).getNombre_carretera());
             if(nomCarretera==true){
                 listaInformacionSegmentos.add("Carretera: "+listaSegmentos.get(i).getNombre_carretera()+" - PRI: "+listaSegmentos.get(i).getPri());
+                listaIdSegmentos.add(listaSegmentos.get(i).getId_segmento()-1);
             }else{
-                listaInformacionSegmentos.add("NO ES DE LA CARRETERA");
+
             }
 
         }
