@@ -42,8 +42,6 @@ public class ListaCarreterasAdapter extends RecyclerView.Adapter<ListaCarreteras
         holder.tvCVTerrito.setText(listaCarretera.get(position).getTerritorial());
         holder.tvCVAdmon.setText(listaCarretera.get(position).getAdmon());
         holder.tvCVLevan.setText(listaCarretera.get(position).getLevantado());
-
-
     }
 
     @Override

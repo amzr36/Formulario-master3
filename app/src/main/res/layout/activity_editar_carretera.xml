@@ -103,7 +103,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/id"
-        android:visibility="invisible"/>
+        android:visibility="visible"/>
+    <TextView
+        android:id="@+id/tvEditarNombreCarretera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 

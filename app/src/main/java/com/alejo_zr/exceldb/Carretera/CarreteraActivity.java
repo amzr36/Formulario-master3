@@ -11,11 +11,13 @@ import com.alejo_zr.exceldb.Segmento.Flexible.ConsultarSegmentoFlexActivity;
 import com.alejo_zr.exceldb.Segmento.Rigido.ConsultarSegmentoRigiActivity;
 import com.alejo_zr.exceldb.entidades.Carretera;
 
+import java.io.Serializable;
+
 public class CarreteraActivity extends AppCompatActivity {
 
     private TextView tvIdCarretera,tvNomCarretera,tvNombreCarretera,tvCodigoCarretera,tvTerritorialCarretera,tvAdmonCarretera,
             tvLevantadoCarretera;
-    private String tvIdCarreteraS,tvNomCarreteraS,tvNombreCarreteraS,tvCodigoCarreteraS,tvTerritorialCarreteraS,tvAdmonCarreteraS,
+    private Serializable tvIdCarreteraS,tvNomCarreteraS,tvNombreCarreteraS,tvCodigoCarreteraS,tvTerritorialCarreteraS,tvAdmonCarreteraS,
             tvLevantadoCarreteraS;
 
     @Override
@@ -47,7 +49,6 @@ public class CarreteraActivity extends AppCompatActivity {
         }
 
     }
-
 
 
     public void onClick(View view) {

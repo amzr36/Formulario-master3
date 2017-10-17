@@ -9,9 +9,9 @@ import java.io.Serializable;
 public class SegmentoFlex implements Serializable {
 
     private Integer id_segmento;
+    private String id_carretera;
     private String nombre_carretera;
-    private Integer pavInt;
-    private String tipoPav;
+    private String fecha;
     private String nCalzadas;
     private String nCarriles;
     private String anchoCarril;
@@ -20,12 +20,12 @@ public class SegmentoFlex implements Serializable {
     private String prf;
     private String comentarios;
 
-    public SegmentoFlex(Integer id_segmento, String nombre_carretera, Integer pavInt, String tipoPav, String nCalzadas,
+    public SegmentoFlex(Integer id_segmento, String id_carretera, String nombre_carretera, String fecha, String nCalzadas,
                         String nCarriles, String anchoCarril, String anchoBerma, String pri, String prf, String comentarios) {
         this.id_segmento = id_segmento;
+        this.id_carretera = id_carretera;
         this.nombre_carretera = nombre_carretera;
-        this.pavInt = pavInt;
-        this.tipoPav = tipoPav;
+        this.fecha = fecha;
         this.nCalzadas = nCalzadas;
         this.nCarriles = nCarriles;
         this.anchoCarril = anchoCarril;
@@ -47,6 +47,14 @@ public class SegmentoFlex implements Serializable {
         this.id_segmento = id_segmento;
     }
 
+    public String getId_carretera() {
+        return id_carretera;
+    }
+
+    public void setId_carretera(String id_carretera) {
+        this.id_carretera = id_carretera;
+    }
+
     public String getNombre_carretera() {
         return nombre_carretera;
     }
@@ -55,20 +63,12 @@ public class SegmentoFlex implements Serializable {
         this.nombre_carretera = nombre_carretera;
     }
 
-    public Integer getPavInt() {
-        return pavInt;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setPavInt(Integer pavInt) {
-        this.pavInt = pavInt;
-    }
-
-    public String getTipoPav() {
-        return tipoPav;
-    }
-
-    public void setTipoPav(String tipoPav) {
-        this.tipoPav = tipoPav;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
     public String getnCalzadas() {

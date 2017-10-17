@@ -24,7 +24,7 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
     private ArrayList<String> listaInformacionSegmentos;
     private ArrayList<SegmentoFlex> listaSegmentos;
     private ArrayList<Integer> listaIdSegmentos;
-    private TextView tvnomCarretera_consultar_segmentoFlex;
+    private TextView tvnomCarretera_consultar_segmentoFlex,idCarreteraSegFlexConsulta;
 
     private BaseDatos baseDatos;
 
@@ -37,11 +37,13 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
 
         listViewSegmentos = (ListView) findViewById(R.id.listViewSegmentoFlex);
         tvnomCarretera_consultar_segmentoFlex = (TextView) findViewById(R.id.tvnomCarretera_consultar_segmentoFlex);
+        idCarreteraSegFlexConsulta = (TextView) findViewById(R.id.idCarreteraSegFlexConsulta);
 
         Bundle bundle = getIntent().getExtras();
-        //String dato_id = bundle.getString("id_carretera").toString();
+        String dato_id = bundle.getString("id_carretera").toString();
         String dato_nom = bundle.getString("nom_carretera").toString();
         tvnomCarretera_consultar_segmentoFlex.setText(dato_nom);
+        idCarreteraSegFlexConsulta.setText(dato_id);
 
         consultarListaSegmentos();
 
@@ -72,11 +74,13 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
 
         listViewSegmentos = (ListView) findViewById(R.id.listViewSegmentoFlex);
         tvnomCarretera_consultar_segmentoFlex = (TextView) findViewById(R.id.tvnomCarretera_consultar_segmentoFlex);
+        idCarreteraSegFlexConsulta = (TextView) findViewById(R.id.idCarreteraSegFlexConsulta);
 
         Bundle bundle = getIntent().getExtras();
-        //String dato_id = bundle.getString("id_carretera").toString();
+        String dato_id = bundle.getString("id_carretera").toString();
         String dato_nom = bundle.getString("nom_carretera").toString();
         tvnomCarretera_consultar_segmentoFlex.setText(dato_nom);
+        idCarreteraSegFlexConsulta.setText(dato_id);
 
         consultarListaSegmentos();
 
@@ -116,14 +120,15 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
             segmento = new SegmentoFlex();
 
             segmento.setId_segmento(cursor.getInt(0));
-            segmento.setNombre_carretera(cursor.getString(1));
-            segmento.setnCalzadas(cursor.getString(2));
-            segmento.setnCarriles(cursor.getString(3));
-            segmento.setAnchoCarril(cursor.getString(4));
-            segmento.setAnchoBerma(cursor.getString(5));
-            segmento.setPri(cursor.getString(6));
-            segmento.setPrf(cursor.getString(7));
-            segmento.setComentarios(cursor.getString(8));
+            segmento.setId_carretera(cursor.getString(1));
+            segmento.setNombre_carretera(cursor.getString(2));
+            segmento.setnCalzadas(cursor.getString(3));
+            segmento.setnCarriles(cursor.getString(4));
+            segmento.setAnchoCarril(cursor.getString(5));
+            segmento.setAnchoBerma(cursor.getString(6));
+            segmento.setPri(cursor.getString(7));
+            segmento.setPrf(cursor.getString(8));
+            segmento.setComentarios(cursor.getString(9));
 
             listaSegmentos.add(segmento);
         }
@@ -137,17 +142,12 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
         listaInformacionSegmentos = new ArrayList<String>();
         listaIdSegmentos = new ArrayList<Integer>();
 
-
         for (int i=0; i<listaSegmentos.size();i++){
             boolean nomCarretera = tvnomCarretera_consultar_segmentoFlex.getText().toString().equals(listaSegmentos.get(i).getNombre_carretera());
             if(nomCarretera==true){
                 listaInformacionSegmentos.add("Carretera: "+listaSegmentos.get(i).getNombre_carretera()+" - PRI: "+listaSegmentos.get(i).getPri());
                 listaIdSegmentos.add(listaSegmentos.get(i).getId_segmento()-1);
-
-            }else{
-                //listaInformacionSegmentos.add("NO ES DE LA CARRETERA");
             }
-
         }
     }
 
@@ -156,6 +156,7 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
         switch (view.getId()){
             case R.id.floabtnAddSegFlex:
                 Intent intent = new Intent(ConsultarSegmentoFlexActivity.this,RegistroSegmentoFlexActivity.class);
+                intent.putExtra("id_carretera",idCarreteraSegFlexConsulta.getText().toString());
                 intent.putExtra("nom_carretera",tvnomCarretera_consultar_segmentoFlex.getText().toString());
                 startActivity(intent);
                 break;

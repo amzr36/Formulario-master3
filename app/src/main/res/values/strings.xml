@@ -66,6 +66,7 @@
     <string name="latitud">Latitud</string>
     <string name="longitud">Longitud</string>
     <string name="patoFlex">Registro Daños Pav. Flex.</string>
+    <string name="fecha">Fecha</string>
 
     <!--Daños Pavimento Flexible!-->
     <string name="fisuras_long_transversales">Fisuras Longitudinales y transversales</string>
