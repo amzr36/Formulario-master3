@@ -1,10 +1,13 @@
 package com.alejo_zr.exceldb.Segmento.Flexible;
 
+import android.app.DatePickerDialog;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,12 +16,19 @@ import com.alejo_zr.exceldb.BaseDatos;
 import com.alejo_zr.exceldb.R;
 import com.alejo_zr.exceldb.utilidades.Utilidades;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class RegistroSegmentoFlexActivity extends AppCompatActivity {
 
 
-    private EditText campoNCalzadas, campoNCarriles, campoAnchoCarril, campoAnchoBerma, campoPRI, campoPRF, campoComentarios;
+    private EditText campoNCalzadas, campoNCarriles, campoAnchoCarril, campoAnchoBerma, campoPRI, campoPRF, campoComentarios,campoFecha;
     private TextView tvId_Carretera_SegmentoFlex,tvNombre_Carretera_Segmento,campotipoPav;
     private TextInputLayout input_camponCalzadas,input_campoNCarriles,input_campoAnchoCarril,input_campoAnchoBerma,input_campoPRI;
+    private Button btnFecha;
+
+    private  int dia, mes, ano;
 
 
     @Override
@@ -34,6 +44,8 @@ public class RegistroSegmentoFlexActivity extends AppCompatActivity {
         campoPRI = (EditText) findViewById(R.id.campoPRIFlex);
         campoPRF = (EditText) findViewById(R.id.campoPRFFlex);
         campoComentarios = (EditText) findViewById(R.id.campoComentariosFlex);
+        campoFecha = (EditText) findViewById(R.id.campoFechaSegmentoFlexRegistro);
+        btnFecha = (Button) findViewById(R.id.btnFecha);
 
         tvId_Carretera_SegmentoFlex = (TextView) findViewById(R.id.tvId_Carretera_SegmentoFlex);
         tvNombre_Carretera_Segmento = (TextView) findViewById(R.id.tvNombre_Carretera_SegmentoFlex);
@@ -50,13 +62,50 @@ public class RegistroSegmentoFlexActivity extends AppCompatActivity {
         String dato_id = bundle.getString("id_carretera").toString();
         tvId_Carretera_SegmentoFlex.setText(dato_id);
         tvNombre_Carretera_Segmento.setText(dato_nom);
+        
+        fechaActual();
 
 
     }
 
-    public void onClick(View view) {
-        verificarDatos();
+    private void fechaActual() {
 
+        final Calendar c = Calendar.getInstance();
+        ano = c.get(Calendar.YEAR);
+        mes = c.get(Calendar.MONTH);
+        dia = c.get(Calendar.DAY_OF_MONTH);
+
+        Format formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String s = formatter.format(c.getTime());
+        campoFecha.setText(s);
+    }
+
+    public void onClick(View view) {
+
+        switch (view.getId()){
+
+            case R.id.btnRegistroSegmentoFlex:
+                verificarDatos();
+                break;
+            case R.id.btnFecha:
+                obtenerFecha();
+                break;
+        }
+
+
+    }
+
+    private void obtenerFecha() {
+        final Calendar c= Calendar.getInstance();
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,android.R.style.Theme_Holo_Dialog_MinWidth, new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                campoFecha.setText(dayOfMonth + "/" + (monthOfYear) + "/" + year);
+            }
+        }, dia, mes, ano);
+        datePickerDialog.show();
     }
 
     /**Se verifica que los datos minimos sean diligenciados**/
