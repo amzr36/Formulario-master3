@@ -140,15 +140,15 @@ public class EditarCarreteraActivity extends AppCompatActivity {
             segmento = new SegmentoFlex();
 
             segmento.setId_segmento(cursor.getInt(0));
-            segmento.setId_carretera(cursor.getString(1));
-            segmento.setNombre_carretera(cursor.getString(2));
-            segmento.setnCalzadas(cursor.getString(3));
-            segmento.setnCarriles(cursor.getString(4));
-            segmento.setAnchoCarril(cursor.getString(5));
-            segmento.setAnchoBerma(cursor.getString(6));
-            segmento.setPri(cursor.getString(7));
-            segmento.setPrf(cursor.getString(8));
-            segmento.setComentarios(cursor.getString(9));
+            segmento.setNombre_carretera(cursor.getString(1));
+            segmento.setnCalzadas(cursor.getString(2));
+            segmento.setnCarriles(cursor.getString(3));
+            segmento.setAnchoCarril(cursor.getString(4));
+            segmento.setAnchoBerma(cursor.getString(5));
+            segmento.setPri(cursor.getString(6));
+            segmento.setPrf(cursor.getString(7));
+            segmento.setComentarios(cursor.getString(8));
+            segmento.setFecha(cursor.getString(9));
 
             listaSegmentosF.add(segmento);
         }

@@ -40,10 +40,9 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
         idCarreteraSegFlexConsulta = (TextView) findViewById(R.id.idCarreteraSegFlexConsulta);
 
         Bundle bundle = getIntent().getExtras();
-        String dato_id = bundle.getString("id_carretera").toString();
         String dato_nom = bundle.getString("nom_carretera").toString();
         tvnomCarretera_consultar_segmentoFlex.setText(dato_nom);
-        idCarreteraSegFlexConsulta.setText(dato_id);
+
 
         consultarListaSegmentos();
 
@@ -77,10 +76,8 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
         idCarreteraSegFlexConsulta = (TextView) findViewById(R.id.idCarreteraSegFlexConsulta);
 
         Bundle bundle = getIntent().getExtras();
-        String dato_id = bundle.getString("id_carretera").toString();
         String dato_nom = bundle.getString("nom_carretera").toString();
         tvnomCarretera_consultar_segmentoFlex.setText(dato_nom);
-        idCarreteraSegFlexConsulta.setText(dato_id);
 
         consultarListaSegmentos();
 
@@ -120,16 +117,15 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
             segmento = new SegmentoFlex();
 
             segmento.setId_segmento(cursor.getInt(0));
-            segmento.setId_carretera(cursor.getString(1));
-            segmento.setNombre_carretera(cursor.getString(2));
-            segmento.setFecha(cursor.getString(3));
-            segmento.setnCalzadas(cursor.getString(4));
-            segmento.setnCarriles(cursor.getString(5));
-            segmento.setAnchoCarril(cursor.getString(6));
-            segmento.setAnchoBerma(cursor.getString(7));
-            segmento.setPri(cursor.getString(8));
-            segmento.setPrf(cursor.getString(9));
-            segmento.setComentarios(cursor.getString(10));
+            segmento.setNombre_carretera(cursor.getString(1));
+            segmento.setnCalzadas(cursor.getString(2));
+            segmento.setnCarriles(cursor.getString(3));
+            segmento.setAnchoCarril(cursor.getString(4));
+            segmento.setAnchoBerma(cursor.getString(5));
+            segmento.setPri(cursor.getString(6));
+            segmento.setPrf(cursor.getString(7));
+            segmento.setComentarios(cursor.getString(8));
+            segmento.setFecha(cursor.getString(9));
 
             listaSegmentos.add(segmento);
         }
@@ -162,8 +158,6 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
         }
-
-
     }
 
 }

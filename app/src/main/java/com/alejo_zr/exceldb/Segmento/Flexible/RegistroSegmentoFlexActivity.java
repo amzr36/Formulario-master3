@@ -24,7 +24,7 @@ public class RegistroSegmentoFlexActivity extends AppCompatActivity {
 
 
     private EditText campoNCalzadas, campoNCarriles, campoAnchoCarril, campoAnchoBerma, campoPRI, campoPRF, campoComentarios,campoFecha;
-    private TextView tvId_Carretera_SegmentoFlex,tvNombre_Carretera_Segmento,campotipoPav;
+    private TextView tvNombre_Carretera_Segmento;
     private TextInputLayout input_camponCalzadas,input_campoNCarriles,input_campoAnchoCarril,input_campoAnchoBerma,input_campoPRI;
     private Button btnFecha;
 
@@ -47,7 +47,7 @@ public class RegistroSegmentoFlexActivity extends AppCompatActivity {
         campoFecha = (EditText) findViewById(R.id.campoFechaSegmentoFlexRegistro);
         btnFecha = (Button) findViewById(R.id.btnFecha);
 
-        tvId_Carretera_SegmentoFlex = (TextView) findViewById(R.id.tvId_Carretera_SegmentoFlex);
+
         tvNombre_Carretera_Segmento = (TextView) findViewById(R.id.tvNombre_Carretera_SegmentoFlex);
 
         input_camponCalzadas = (TextInputLayout) findViewById(R.id.input_camponCalzadasFlex);
@@ -59,8 +59,6 @@ public class RegistroSegmentoFlexActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         String dato_nom = bundle.getString("nom_carretera").toString();
-        String dato_id = bundle.getString("id_carretera").toString();
-        tvId_Carretera_SegmentoFlex.setText(dato_id);
         tvNombre_Carretera_Segmento.setText(dato_nom);
         
         fechaActual();
@@ -156,13 +154,13 @@ public class RegistroSegmentoFlexActivity extends AppCompatActivity {
         SQLiteDatabase db=bd.getWritableDatabase();
 
         String insert="INSERT INTO "+ Utilidades.SEGMENTOFLEX.TABLA_SEGMENTO
-                +" ( "+Utilidades.SEGMENTOFLEX.CAMPO_ID_CARRETERA+","+Utilidades.SEGMENTOFLEX.CAMPO_NOMBRE_CARRETERA_SEGMENTO+","+Utilidades.SEGMENTOFLEX.CAMPO_CALZADAS_SEGMENTO+","
+                +" ( "+Utilidades.SEGMENTOFLEX.CAMPO_NOMBRE_CARRETERA_SEGMENTO+","+Utilidades.SEGMENTOFLEX.CAMPO_CALZADAS_SEGMENTO+","
                 +Utilidades.SEGMENTOFLEX.CAMPO_CARRILES_SEGMENTO+","+Utilidades.SEGMENTOFLEX.CAMPO_ANCHO_CARRIL+","+Utilidades.SEGMENTOFLEX.CAMPO_ANCHO_BERMA+","+Utilidades.SEGMENTOFLEX.CAMPO_PRI_SEGMENTO+","
-                +Utilidades.SEGMENTOFLEX.CAMPO_PRF_SEGMENTO+","+Utilidades.SEGMENTOFLEX.CAMPO_COMENTARIOS+")" +
-                " VALUES ('"+tvId_Carretera_SegmentoFlex.getText().toString()+"' , '"+tvNombre_Carretera_Segmento.getText().toString()+"' , '"
+                +Utilidades.SEGMENTOFLEX.CAMPO_PRF_SEGMENTO+","+Utilidades.SEGMENTOFLEX.CAMPO_COMENTARIOS+","+Utilidades.SEGMENTOFLEX.CAMPO_FECHA+")" +
+                " VALUES ('"+tvNombre_Carretera_Segmento.getText().toString()+"' , '"
                 +campoNCalzadas.getText().toString()+"' , '"+campoNCarriles.getText().toString()+"' , '"+campoAnchoCarril.getText().toString()+"' , '"
                 +campoAnchoBerma.getText().toString()+"' , '"+campoPRI.getText().toString()+"' , '"+campoPRF.getText().toString()+"' , '"
-                +campoComentarios.getText().toString()+"')";
+                +campoComentarios.getText().toString()+"' , '"+campoFecha.getText().toString()+"')";
 
         db.execSQL(insert);
         Toast.makeText(getApplicationContext(),R.string.regisSeg,Toast.LENGTH_SHORT).show();

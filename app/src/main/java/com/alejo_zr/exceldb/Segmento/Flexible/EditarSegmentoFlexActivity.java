@@ -17,7 +17,8 @@ import com.alejo_zr.exceldb.utilidades.Utilidades;
 public class EditarSegmentoFlexActivity extends AppCompatActivity {
 
 
-    EditText campoNCalzadas_EditarFlex, campoNCarriles_EditarFlex, campoAnchoCarril_EditarFlex, campoAnchoBerma_EditarFlex, campoPRI_EditarFlex, campoPRF_EditarFlex, campoComentarios_EditarFlex;
+    EditText campoNCalzadas_EditarFlex, campoNCarriles_EditarFlex, campoAnchoCarril_EditarFlex, campoAnchoBerma_EditarFlex, campoPRI_EditarFlex,
+            campoPRF_EditarFlex, campoComentarios_EditarFlex,campoFechaSegmentoFlexEditar;
     TextView tvId_Carretera_Segmento_EditarFlex,tvNombre_Carretera_Segmento_EditarFlex,campotipoPav_EditarFlex,tv_id_segmento_editarFlex;
 
     BaseDatos baseDatos;
@@ -37,8 +38,8 @@ public class EditarSegmentoFlexActivity extends AppCompatActivity {
         campoPRI_EditarFlex = (EditText) findViewById(R.id.campoPRI_EditarFlex);
         campoPRF_EditarFlex = (EditText) findViewById(R.id.campoPRF_EditarFlex);
         campoComentarios_EditarFlex = (EditText) findViewById(R.id.campoComentarios_EditarFlex);
+        campoFechaSegmentoFlexEditar = (EditText) findViewById(R.id.campoFechaSegmentoFlexEditar);
 
-        tvId_Carretera_Segmento_EditarFlex = (TextView) findViewById(R.id.tvId_Carretera_Segmento_EditarFlex);
         tvNombre_Carretera_Segmento_EditarFlex = (TextView) findViewById(R.id.tvNombre_Carretera_Segmento_EditarFlex);
 
 
@@ -53,6 +54,7 @@ public class EditarSegmentoFlexActivity extends AppCompatActivity {
         String pri = bundle.getString("tvPRI").toString();
         String prf = bundle.getString("tvPRF").toString();
         String comentarios = bundle.getString("tvComentarios").toString();
+        String fecha = bundle.getString("tvFechaSegmentoFlex".toString());
 
 
         //Se asignan los datos de la carretera a cada EditText
@@ -65,7 +67,7 @@ public class EditarSegmentoFlexActivity extends AppCompatActivity {
         campoPRI_EditarFlex.setText(pri);
         campoPRF_EditarFlex.setText(prf);
         campoComentarios_EditarFlex.setText(comentarios);
-
+        campoFechaSegmentoFlexEditar.setText(fecha);
 
     }
 
@@ -107,6 +109,7 @@ public class EditarSegmentoFlexActivity extends AppCompatActivity {
         values.put(Utilidades.SEGMENTOFLEX.CAMPO_PRI_SEGMENTO, campoPRI_EditarFlex.getText().toString());
         values.put(Utilidades.SEGMENTOFLEX.CAMPO_PRF_SEGMENTO, campoPRF_EditarFlex.getText().toString());
         values.put(Utilidades.SEGMENTOFLEX.CAMPO_COMENTARIOS  , campoComentarios_EditarFlex.getText().toString());
+        values.put(Utilidades.SEGMENTOFLEX.CAMPO_FECHA, campoFechaSegmentoFlexEditar.getText().toString());
 
 
         db.update(Utilidades.SEGMENTOFLEX.TABLA_SEGMENTO,values,Utilidades.SEGMENTOFLEX.CAMPO_ID_SEGMENTO+"=?",parametros);

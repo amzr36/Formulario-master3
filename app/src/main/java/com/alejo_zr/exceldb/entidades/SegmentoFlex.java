@@ -9,7 +9,6 @@ import java.io.Serializable;
 public class SegmentoFlex implements Serializable {
 
     private Integer id_segmento;
-    private String id_carretera;
     private String nombre_carretera;
     private String fecha;
     private String nCalzadas;
@@ -20,10 +19,9 @@ public class SegmentoFlex implements Serializable {
     private String prf;
     private String comentarios;
 
-    public SegmentoFlex(Integer id_segmento, String id_carretera, String nombre_carretera, String fecha, String nCalzadas,
-                        String nCarriles, String anchoCarril, String anchoBerma, String pri, String prf, String comentarios) {
+    public SegmentoFlex(Integer id_segmento, String nombre_carretera, String fecha, String nCalzadas, String nCarriles, String anchoCarril,
+                        String anchoBerma, String pri, String prf, String comentarios) {
         this.id_segmento = id_segmento;
-        this.id_carretera = id_carretera;
         this.nombre_carretera = nombre_carretera;
         this.fecha = fecha;
         this.nCalzadas = nCalzadas;
@@ -45,14 +43,6 @@ public class SegmentoFlex implements Serializable {
 
     public void setId_segmento(Integer id_segmento) {
         this.id_segmento = id_segmento;
-    }
-
-    public String getId_carretera() {
-        return id_carretera;
-    }
-
-    public void setId_carretera(String id_carretera) {
-        this.id_carretera = id_carretera;
     }
 
     public String getNombre_carretera() {

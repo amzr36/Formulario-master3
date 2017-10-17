@@ -30,9 +30,7 @@ public class Utilidades {
         //Constantes tabla Segmentos
         public static final String TABLA_SEGMENTO = "segmento_Flex";
         public static final String CAMPO_ID_SEGMENTO = "id_segmento";
-        public static final String CAMPO_ID_CARRETERA = "id_carretera_seg_flex";
         public static final String CAMPO_NOMBRE_CARRETERA_SEGMENTO = "nombre_carretera";
-        public static final String CAMPO_FECHA="fecha";
         public static final String CAMPO_CALZADAS_SEGMENTO = "numero_calzadas";
         public static final String CAMPO_CARRILES_SEGMENTO = "numero_carriles";
         public static final String CAMPO_ANCHO_CARRIL = "ancho_carril";
@@ -40,12 +38,13 @@ public class Utilidades {
         public static final String CAMPO_PRI_SEGMENTO = "pri";
         public static final String CAMPO_PRF_SEGMENTO = "prf";
         public static final String CAMPO_COMENTARIOS = "comentarios";
+        public static final String CAMPO_FECHA="fecha";
 
 
         public static final String CREAR_TABLA_SEGMENTO = "CREATE TABLE " +
-                "" + TABLA_SEGMENTO + " (" + CAMPO_ID_SEGMENTO + " INTEGER PRIMARY KEY AUTOINCREMENT, "+CAMPO_ID_CARRETERA+" TEXT,"+ CAMPO_NOMBRE_CARRETERA_SEGMENTO + " TEXT,"+
-                CAMPO_FECHA + " TEXT,"+ CAMPO_CALZADAS_SEGMENTO +" TEXT," + CAMPO_CARRILES_SEGMENTO + " TEXT," + CAMPO_ANCHO_CARRIL + " TEXT," + CAMPO_ANCHO_BERMA +" TEXT," +
-                CAMPO_PRI_SEGMENTO + " TEXT,"+ CAMPO_PRF_SEGMENTO + " TEXT," + CAMPO_COMENTARIOS + " TEXT)";
+                "" + TABLA_SEGMENTO + " (" + CAMPO_ID_SEGMENTO + " INTEGER PRIMARY KEY AUTOINCREMENT, "+ CAMPO_NOMBRE_CARRETERA_SEGMENTO + " TEXT,"+
+                 CAMPO_CALZADAS_SEGMENTO +" TEXT," + CAMPO_CARRILES_SEGMENTO + " TEXT," + CAMPO_ANCHO_CARRIL + " TEXT," + CAMPO_ANCHO_BERMA +" TEXT," +
+                CAMPO_PRI_SEGMENTO + " TEXT,"+ CAMPO_PRF_SEGMENTO + " TEXT," + CAMPO_COMENTARIOS +" TEXT,"+CAMPO_FECHA +  " TEXT)";
     }
 
     public static abstract class SEGMENTORIGI implements BaseColumns {

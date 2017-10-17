@@ -57,7 +57,7 @@
             android:id="@+id/tvPavFlex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/vacio"
+            android:hint="@string/pavFlex"
             android:layout_marginLeft="@dimen/marginLeftTV"
             />
     </LinearLayout>
@@ -203,6 +203,23 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvComen"
         android:hint="@string/vacio"/>
+
+    <TextView
+        android:id="@+id/tvFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvComentariosFlex"
+        android:text="@string/fecha"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvFechaSegmentoFlex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="vacio"
+        android:layout_below="@id/tvComentariosFlex"
+        android:layout_toRightOf="@id/tvFecha"
+        android:layout_marginLeft="@dimen/marginLeftTV"/>
 
     <Button
         android:id="@+id/btnRegistrarPatologia"

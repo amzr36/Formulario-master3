@@ -147,7 +147,7 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/tvCarrilDanio"
+                android:id="@+id/tvCarrilDanioPatoFlexActivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -177,17 +177,13 @@
             >
 
             <TextView
-                android:id="@+id/tvdanionombre"
+                android:id="@+id/tvdanionombrePatoFlexActivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/vacio"
                 />
-            <TextView
-                android:id="@+id/tvdanioCodigo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"/>
+
         </LinearLayout>
 
         <TextView
@@ -212,7 +208,7 @@
                 android:layout_weight="1"
                 android:text="@string/largo"/>
             <TextView
-                android:id="@+id/tvlarDanio"
+                android:id="@+id/tvlarDanioPatoFlexActivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -226,7 +222,7 @@
                 android:text="@string/anchoD"
                 />
             <TextView
-                android:id="@+id/tvanchDanio"
+                android:id="@+id/tvanchDanioPatoFlexActivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -257,7 +253,7 @@
                 android:layout_weight="1"
                 android:text="@string/largo"/>
             <TextView
-                android:id="@+id/tvlarRepa"
+                android:id="@+id/tvlarRepaPatoFlexActivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -271,7 +267,7 @@
                 android:text="@string/anchoD"
                 />
             <TextView
-                android:id="@+id/tvanchoRepa_pato_flex"
+                android:id="@+id/tvanchoRepaPatoFlexActivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -289,7 +285,7 @@
             android:layout_below="@+id/lldimenrepa"
             android:layout_marginTop="@dimen/marginTopTV"/>
         <TextView
-            android:id="@+id/tvAclaraciones"
+            android:id="@+id/tvAclaracionesPatoFlexActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/vacio"
@@ -299,7 +295,7 @@
             android:id="@+id/tvDireccionPatoFlex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvAclaraciones"
+            android:layout_below="@id/tvAclaracionesPatoFlexActivity"
             android:text="@string/nombre"
             android:visibility="invisible"/>
 

@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.alejo_zr.exceldb.MainActivity;
 import com.alejo_zr.exceldb.Patologia.Flexible.ConsultaPatologiaFlexActivity;
 import com.alejo_zr.exceldb.Patologia.Flexible.RegistroPatologiaFlexActivity;
 import com.alejo_zr.exceldb.R;
@@ -14,7 +13,7 @@ import com.alejo_zr.exceldb.entidades.SegmentoFlex;
 
 public class SegmentoFlexActivity extends AppCompatActivity {
 
-   private TextView tv_nombre_carretera_segmento,tv_id_segmento,tvPav, tvnCalzadas, tvnCarriles, tvanchoCarril, tvanchoBerma, tvPRI, tvPRF, tvComentarios;
+   private TextView tv_nombre_carretera_segmento,tv_id_segmento,tvPav, tvnCalzadas, tvnCarriles, tvanchoCarril, tvanchoBerma, tvPRI, tvPRF, tvComentarios,tvFechaSegmentoFlex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +29,7 @@ public class SegmentoFlexActivity extends AppCompatActivity {
         tvPRI= (TextView) findViewById(R.id.tvPRIFlex);
         tvPRF= (TextView) findViewById(R.id.tvPRFFlex);
         tvComentarios= (TextView) findViewById(R.id.tvComentariosFlex);
+        tvFechaSegmentoFlex = (TextView) findViewById(R.id.tvFechaSegmentoFlex);
 
 
         Bundle segmentoEnviado=getIntent().getExtras();
@@ -47,6 +47,7 @@ public class SegmentoFlexActivity extends AppCompatActivity {
             tvPRI.setText(segmento.getPri().toString());
             tvPRF.setText(segmento.getPrf().toString());
             tvComentarios.setText(segmento.getComentarios().toString());
+            tvFechaSegmentoFlex.setText(segmento.getFecha().toString());
         }
 
 
@@ -84,6 +85,7 @@ public class SegmentoFlexActivity extends AppCompatActivity {
                 intent.putExtra("tvPRI" , tvPRI.getText().toString());
                 intent.putExtra("tvPRF" , tvPRF.getText().toString());
                 intent.putExtra("tvComentarios" , tvComentarios.getText().toString());
+                intent.putExtra("tvFechaSegmentoFlex",tvFechaSegmentoFlex.getText().toString());
 
                 startActivity(intent);
                 break;
