@@ -72,7 +72,7 @@ public class Utilidades {
 
         //Constantes tabla patologia
         public static final String TABLA_PATOLOGIA = "patologia_flex";
-        public static final String CAMPO_ID_PATOLOGIA = "id";
+        public static final String CAMPO_ID_PATOLOGIA = "id_patologia";
         public static final String CAMPO_ID_SEGMENTO_PATOLOGIA = "id_segmento";
         public static final String CAMPO_NOMBRE_CARRETERA_PATOLOGIA = "nom_carretera";
         public static final String CAMPO_ABSCISA_PATOLOGIA= "abscisa_flex";
@@ -80,6 +80,7 @@ public class Utilidades {
         public static final String CAMPO_LONGITUD="longitud";
         public static final String CAMPO_CARRIL_PATOLOGIA = "carril";
         public static final String CAMPO_DANIO_PATOLOGIA = "daño";
+        public static final String CAMPO_SEVERIDAD="severidad";
         public static final String CAMPO_LARGO_PATOLOGIA = "largo";
         public static final String CAMPO_ANCHO_PATOLOGIA = "ancho";
         public static final String CAMPO_LARGO_REPARACION = "largo_reparacion";
@@ -91,8 +92,8 @@ public class Utilidades {
         // Sentencia SQL para la creación de una tabla
         public static final String CREAR_TABLA_PATOLOGIA = "CREATE TABLE " + TABLA_PATOLOGIA +
                 " (" + CAMPO_ID_PATOLOGIA + " INTEGER PRIMARY KEY AUTOINCREMENT, "+ CAMPO_ID_SEGMENTO_PATOLOGIA + " TEXT," + CAMPO_NOMBRE_CARRETERA_PATOLOGIA + " TEXT,"+ CAMPO_ABSCISA_PATOLOGIA + " TEXT,"+
-                CAMPO_LATITUD + " TEXT,"+ CAMPO_LONGITUD+ " TEXT," + CAMPO_DANIO_PATOLOGIA + " TEXT ," +
-                CAMPO_CARRIL_PATOLOGIA + " TEXT ," + CAMPO_LARGO_PATOLOGIA + " TEXT," + CAMPO_ANCHO_PATOLOGIA + " TEXT,"+ CAMPO_LARGO_REPARACION + " TEXT," +
+                CAMPO_LATITUD + " TEXT,"+ CAMPO_LONGITUD+ " TEXT," + CAMPO_DANIO_PATOLOGIA + " TEXT ,"+CAMPO_CARRIL_PATOLOGIA + " TEXT ,"
+                + CAMPO_SEVERIDAD + " TEXT," +CAMPO_LARGO_PATOLOGIA + " TEXT," + CAMPO_ANCHO_PATOLOGIA + " TEXT,"+ CAMPO_LARGO_REPARACION + " TEXT," +
                 CAMPO_ANCHO_REPARACION + " TEXT," + CAMPO_ACLARACIONES + " TEXT," + CAMPO_FOTO_DANIO + " TEXT)";
     }
 

@@ -18,7 +18,7 @@ import com.alejo_zr.exceldb.entidades.PatoFlex;
 public class PatologiaFlexActivity extends AppCompatActivity {
 
     private TextView tvIdDaño,tvIdSegmento,tvNombreCarreteraPatologiaActivity,tvCarrilDanio,tvAclaraciones,tvanchRepa,tvlarRepa,tvdanionombre,tvlarDanio,tvanchoDanio,
-                    tvAbscisaPatoFlexActivity,tvLatPatoFlexActivity,tvLongFlexActivity,tvDireccionPatoFlex;
+                    tvAbscisaPatoFlexActivity,tvLatPatoFlexActivity,tvLongFlexActivity,tvDireccionPatoFlex,tvSeveridadPatoFlexActivity;
     private String path;
     private ImageView imgPatoFlex;
 
@@ -35,12 +35,14 @@ public class PatologiaFlexActivity extends AppCompatActivity {
         tvLatPatoFlexActivity= (TextView) findViewById(R.id.tvLatPatoFlexActivity);
         tvLongFlexActivity= (TextView) findViewById(R.id.tvLongFlexActivity);
         tvCarrilDanio= (TextView) findViewById(R.id.tvCarrilDanioPatoFlexActivity);
-        tvAclaraciones=(TextView) findViewById(R.id.tvAclaracionesPatoFlexActivity);
-        tvanchRepa = (TextView) findViewById(R.id.tvanchoRepaPatoFlexActivity);
-        tvlarRepa = (TextView) findViewById(R.id.tvlarRepaPatoFlexActivity);
         tvdanionombre = (TextView) findViewById(R.id.tvdanionombrePatoFlexActivity);
+        tvSeveridadPatoFlexActivity = (TextView) findViewById(R.id.tvSeveridadPatoFlexActivity);
         tvlarDanio = (TextView) findViewById(R.id.tvlarDanioPatoFlexActivity);
         tvanchoDanio = (TextView) findViewById(R.id.tvanchDanioPatoFlexActivity);
+        tvanchRepa = (TextView) findViewById(R.id.tvanchoRepaPatoFlexActivity);
+        tvlarRepa = (TextView) findViewById(R.id.tvlarRepaPatoFlexActivity);
+        tvAclaraciones=(TextView) findViewById(R.id.tvAclaracionesPatoFlexActivity);
+
         tvIdSegmento = (TextView) findViewById(R.id.tvIdSegmentoPatologiaFlexActivity);
         tvIdDaño = (TextView) findViewById(R.id.tvIdDañoPatoFlex);
         tvDireccionPatoFlex = (TextView) findViewById(R.id.tvDireccionPatoFlex);
@@ -60,6 +62,7 @@ public class PatologiaFlexActivity extends AppCompatActivity {
             tvLongFlexActivity.setText(patoFlex.getLongitud().toString());
             tvCarrilDanio.setText(patoFlex.getCarril().toString());
             tvdanionombre.setText(patoFlex.getDanio().toString());
+            tvSeveridadPatoFlexActivity.setText(patoFlex.getSeveridad().toString());
             tvlarDanio.setText(patoFlex.getLargoDanio().toString());
             tvanchoDanio.setText(patoFlex.getAnchoDanio().toString());
             tvanchRepa.setText(patoFlex.getAnchoRepa().toString());
@@ -108,6 +111,7 @@ public class PatologiaFlexActivity extends AppCompatActivity {
             tvLongFlexActivity.setText(patoFlex.getLongitud().toString());
             tvCarrilDanio.setText(patoFlex.getCarril().toString());
             tvdanionombre.setText(patoFlex.getDanio().toString());
+            tvSeveridadPatoFlexActivity.setText(patoFlex.getSeveridad().toString());
             tvlarDanio.setText(patoFlex.getLargoDanio().toString());
             tvanchoDanio.setText(patoFlex.getAnchoDanio().toString());
             tvanchRepa.setText(patoFlex.getAnchoRepa().toString());

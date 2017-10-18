@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_horizontal_margin"
     tools:context="com.alejo_zr.exceldb.Patologia.Flexible.RegistroPatologiaFlexActivity">
 
     <LinearLayout
@@ -137,17 +138,33 @@
             android:textSize="@dimen/subTitulo"
             android:textStyle="bold"/>
 
-        <Spinner
+        <fr.ganfra.materialspinner.MaterialSpinner
             android:id="@+id/spinnerPatoFlex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            ></Spinner>
+            app:ms_floatingLabelText="@string/patologia"
+            app:ms_hint="@string/patologia"
+            app:ms_floatingLabelColor="@color/colorAccent"
+            app:ms_multiline="true"/>
+
+
 
         <EditText
             android:id="@+id/campoDanioPato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/codPato"/>
+
+
+        <fr.ganfra.materialspinner.MaterialSpinner
+            android:id="@+id/spinnerSeveridadPatoFlexRegistro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ms_floatingLabelText="@string/severidad"
+            app:ms_hint="@string/severidad"
+            app:ms_floatingLabelColor="@color/colorAccent"
+            app:ms_multiline="true"/>
+
 
         <TextView
             android:id="@+id/tvDimenDanio"

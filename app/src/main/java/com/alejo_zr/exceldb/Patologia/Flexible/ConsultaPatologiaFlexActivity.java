@@ -127,12 +127,13 @@ public class ConsultaPatologiaFlexActivity extends AppCompatActivity {
             patoFlex.setLongitud(cursor.getString(5));
             patoFlex.setDanio(cursor.getString(6));
             patoFlex.setCarril(cursor.getString(7));
-            patoFlex.setLargoDanio(cursor.getString(8));
-            patoFlex.setAnchoDanio(cursor.getString(9));
-            patoFlex.setLargoRepa(cursor.getString(10));
-            patoFlex.setAnchoRepa(cursor.getString(11));
-            patoFlex.setAclaraciones(cursor.getString(12));
-            patoFlex.setFoto(cursor.getString(13));
+            patoFlex.setSeveridad(cursor.getString(8));
+            patoFlex.setLargoDanio(cursor.getString(9));
+            patoFlex.setAnchoDanio(cursor.getString(10));
+            patoFlex.setLargoRepa(cursor.getString(11));
+            patoFlex.setAnchoRepa(cursor.getString(12));
+            patoFlex.setAclaraciones(cursor.getString(13));
+            patoFlex.setFoto(cursor.getString(14));
 
             listaPatologiasFlex.add(patoFlex);
 
@@ -155,7 +156,7 @@ public class ConsultaPatologiaFlexActivity extends AppCompatActivity {
                 if (idSeg == true) {
                     listaInformacionPatologiasFlex.add("Carretera: " + listaPatologiasFlex.get(i).getNombre_carretera_patoFlex() +"-Segmento "
                             +listaPatologiasFlex.get(i).getId_segmento_patoFlex()+ " - Daño: " + listaPatologiasFlex.get(i).getDanio()
-                            +"- ABS "+ listaPatologiasFlex.get(i).getAbscisa());
+                            +"- ABS "+ listaPatologiasFlex.get(i).getAbscisa()+"- Severidad "+listaPatologiasFlex.get(i).getSeveridad());
                     listaIdPatoFlex.add(listaPatologiasFlex.get(i).getId_patoFlex()-1);
                 }
 

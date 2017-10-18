@@ -16,6 +16,7 @@ public class PatoFlex implements Serializable {
     private String longitud;
     private String carril;
     private String danio;
+    private String severidad;
     private String largoDanio;
     private String anchoDanio;
     private String largoRepa;
@@ -23,8 +24,8 @@ public class PatoFlex implements Serializable {
     private String aclaraciones;
     private String foto;
 
-    public PatoFlex(Integer id_patoFlex, String nombre_carretera_patoFlex, String id_segmento_patoFlex, String abscisa, String latitud, String longitud,
-                    String carril, String danio, String largoDanio, String anchoDanio, String largoRepa, String anchoRepa, String aclaraciones, String foto) {
+    public PatoFlex(Integer id_patoFlex, String nombre_carretera_patoFlex, String id_segmento_patoFlex, String abscisa, String latitud, String longitud, String carril,
+                    String danio, String severidad, String largoDanio, String anchoDanio, String largoRepa, String anchoRepa, String aclaraciones, String foto) {
         this.id_patoFlex = id_patoFlex;
         this.nombre_carretera_patoFlex = nombre_carretera_patoFlex;
         this.id_segmento_patoFlex = id_segmento_patoFlex;
@@ -33,6 +34,7 @@ public class PatoFlex implements Serializable {
         this.longitud = longitud;
         this.carril = carril;
         this.danio = danio;
+        this.severidad = severidad;
         this.largoDanio = largoDanio;
         this.anchoDanio = anchoDanio;
         this.largoRepa = largoRepa;
@@ -107,6 +109,14 @@ public class PatoFlex implements Serializable {
 
     public void setDanio(String danio) {
         this.danio = danio;
+    }
+
+    public String getSeveridad() {
+        return severidad;
+    }
+
+    public void setSeveridad(String severidad) {
+        this.severidad = severidad;
     }
 
     public String getLargoDanio() {

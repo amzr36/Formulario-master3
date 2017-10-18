@@ -96,35 +96,50 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/llabs"
             android:layout_marginTop="@dimen/marginTopTV">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/latitud"
-                android:textSize="@dimen/subTitulo"
-                android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/tvLatPatoFlexActivity"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/vacio"/>
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/longitud"
-                android:textSize="@dimen/subTitulo"
-                android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/latitud"
+                    android:textSize="@dimen/subTitulo"
+                    android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/tvLongFlexActivity"
+                <TextView
+                    android:id="@+id/tvLatPatoFlexActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/vacio"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/vacio"/>
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/longitud"
+                    android:textSize="@dimen/subTitulo"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvLongFlexActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/vacio"/>
+
+            </LinearLayout>
+
+
+
         </LinearLayout>
 
 
@@ -158,31 +173,61 @@
 
 
 
-        <TextView
-            android:id="@+id/tvnombredanio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/patologia"
-            android:textSize="@dimen/subTitulo"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/marginTopTV"
-            android:layout_below="@id/llCariil"/>
-
         <LinearLayout
             android:id="@+id/lldanionombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@id/tvnombredanio"
+            android:layout_below="@id/llCariil"
+            android:layout_marginTop="@dimen/marginTopTV"
             >
 
-            <TextView
-                android:id="@+id/tvdanionombrePatoFlexActivity"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/vacio"
-                />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvnombredanio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/patologia"
+                    android:textSize="@dimen/subTitulo"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:id="@+id/tvdanionombrePatoFlexActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/vacio"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/severidad"
+                    android:textSize="@dimen/subTitulo"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/tvSeveridadPatoFlexActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="vacio"/>
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
 

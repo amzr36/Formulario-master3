@@ -91,7 +91,6 @@ public class ConsultarSegmentoFlexActivity extends AppCompatActivity {
 
                 SegmentoFlex segmentoflex=listaSegmentos.get(listaIdSegmentos.get(posS));
                 Intent intent=new Intent(ConsultarSegmentoFlexActivity.this,SegmentoFlexActivity.class);
-
                 Bundle bundle=new Bundle();
                 bundle.putSerializable("segmento",segmentoflex);
 

@@ -24,7 +24,7 @@ public class RegistroSegmentoFlexActivity extends AppCompatActivity {
 
 
     private EditText campoNCalzadas, campoNCarriles, campoAnchoCarril, campoAnchoBerma, campoPRI, campoPRF, campoComentarios,campoFecha;
-    private TextView tvNombre_Carretera_Segmento;
+    private TextView tvNombre_Carretera_SegmentoFlex;
     private TextInputLayout input_camponCalzadas,input_campoNCarriles,input_campoAnchoCarril,input_campoAnchoBerma,input_campoPRI;
     private Button btnFecha;
 
@@ -48,7 +48,7 @@ public class RegistroSegmentoFlexActivity extends AppCompatActivity {
         btnFecha = (Button) findViewById(R.id.btnFecha);
 
 
-        tvNombre_Carretera_Segmento = (TextView) findViewById(R.id.tvNombre_Carretera_SegmentoFlex);
+        tvNombre_Carretera_SegmentoFlex = (TextView) findViewById(R.id.tvNombre_Carretera_SegmentoFlex);
 
         input_camponCalzadas = (TextInputLayout) findViewById(R.id.input_camponCalzadasFlex);
         input_campoNCarriles= (TextInputLayout) findViewById(R.id.input_campoNCarrilesFlex );
@@ -59,7 +59,7 @@ public class RegistroSegmentoFlexActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         String dato_nom = bundle.getString("nom_carretera").toString();
-        tvNombre_Carretera_Segmento.setText(dato_nom);
+        tvNombre_Carretera_SegmentoFlex.setText(dato_nom);
         
         fechaActual();
 
@@ -157,7 +157,7 @@ public class RegistroSegmentoFlexActivity extends AppCompatActivity {
                 +" ( "+Utilidades.SEGMENTOFLEX.CAMPO_NOMBRE_CARRETERA_SEGMENTO+","+Utilidades.SEGMENTOFLEX.CAMPO_CALZADAS_SEGMENTO+","
                 +Utilidades.SEGMENTOFLEX.CAMPO_CARRILES_SEGMENTO+","+Utilidades.SEGMENTOFLEX.CAMPO_ANCHO_CARRIL+","+Utilidades.SEGMENTOFLEX.CAMPO_ANCHO_BERMA+","+Utilidades.SEGMENTOFLEX.CAMPO_PRI_SEGMENTO+","
                 +Utilidades.SEGMENTOFLEX.CAMPO_PRF_SEGMENTO+","+Utilidades.SEGMENTOFLEX.CAMPO_COMENTARIOS+","+Utilidades.SEGMENTOFLEX.CAMPO_FECHA+")" +
-                " VALUES ('"+tvNombre_Carretera_Segmento.getText().toString()+"' , '"
+                " VALUES ('"+tvNombre_Carretera_SegmentoFlex.getText().toString()+"' , '"
                 +campoNCalzadas.getText().toString()+"' , '"+campoNCarriles.getText().toString()+"' , '"+campoAnchoCarril.getText().toString()+"' , '"
                 +campoAnchoBerma.getText().toString()+"' , '"+campoPRI.getText().toString()+"' , '"+campoPRF.getText().toString()+"' , '"
                 +campoComentarios.getText().toString()+"' , '"+campoFecha.getText().toString()+"')";

@@ -10,7 +10,6 @@ public class SegmentoFlex implements Serializable {
 
     private Integer id_segmento;
     private String nombre_carretera;
-    private String fecha;
     private String nCalzadas;
     private String nCarriles;
     private String anchoCarril;
@@ -18,12 +17,12 @@ public class SegmentoFlex implements Serializable {
     private String pri;
     private String prf;
     private String comentarios;
+    private String fecha;
 
-    public SegmentoFlex(Integer id_segmento, String nombre_carretera, String fecha, String nCalzadas, String nCarriles, String anchoCarril,
-                        String anchoBerma, String pri, String prf, String comentarios) {
+    public SegmentoFlex(Integer id_segmento, String nombre_carretera, String nCalzadas, String nCarriles, String anchoCarril,
+                        String anchoBerma, String pri, String prf, String comentarios, String fecha) {
         this.id_segmento = id_segmento;
         this.nombre_carretera = nombre_carretera;
-        this.fecha = fecha;
         this.nCalzadas = nCalzadas;
         this.nCarriles = nCarriles;
         this.anchoCarril = anchoCarril;
@@ -31,6 +30,7 @@ public class SegmentoFlex implements Serializable {
         this.pri = pri;
         this.prf = prf;
         this.comentarios = comentarios;
+        this.fecha = fecha;
     }
 
     public SegmentoFlex() {
@@ -51,14 +51,6 @@ public class SegmentoFlex implements Serializable {
 
     public void setNombre_carretera(String nombre_carretera) {
         this.nombre_carretera = nombre_carretera;
-    }
-
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
     }
 
     public String getnCalzadas() {
@@ -115,5 +107,13 @@ public class SegmentoFlex implements Serializable {
 
     public void setComentarios(String comentarios) {
         this.comentarios = comentarios;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 }
