@@ -1,5 +1,6 @@
 package com.alejo_zr.exceldb.Carretera;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -83,6 +84,8 @@ public class RegistroCarreteraActivity extends AppCompatActivity {
         }
         if(isValid){
             registrarCarretera();
+            Intent intent= new Intent(RegistroCarreteraActivity.this, ConsultarCarreteraActivity.class);
+            startActivity(intent);
         }
     }
 

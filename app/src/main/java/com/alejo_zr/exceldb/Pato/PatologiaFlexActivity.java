@@ -1,4 +1,4 @@
-package com.alejo_zr.exceldb.Patologia.Flexible;
+package com.alejo_zr.exceldb.Pato;
 
 import android.content.Intent;
 import android.graphics.Bitmap;

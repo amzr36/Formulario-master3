@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.alejo_zr.exceldb.Patologia.Flexible.ConsultaPatologiaFlexActivity;
-import com.alejo_zr.exceldb.Patologia.Flexible.RegistroPatologiaFlexActivity;
+import com.alejo_zr.exceldb.Pato.ConsultaPatologiaFlexActivity;
+import com.alejo_zr.exceldb.Pato.RegistroPatologiaFlexActivity;
 import com.alejo_zr.exceldb.R;
 import com.alejo_zr.exceldb.entidades.SegmentoFlex;
 

@@ -1,4 +1,4 @@
-package com.alejo_zr.exceldb.Patologia.Flexible;
+package com.alejo_zr.exceldb.Pato;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

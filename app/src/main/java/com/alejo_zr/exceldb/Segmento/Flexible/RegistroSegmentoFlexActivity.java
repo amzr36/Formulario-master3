@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,7 +25,6 @@ public class RegistroSegmentoFlexActivity extends AppCompatActivity {
     private EditText campoNCalzadas, campoNCarriles, campoAnchoCarril, campoAnchoBerma, campoPRI, campoPRF, campoComentarios,campoFecha;
     private TextView tvNombre_Carretera_SegmentoFlex;
     private TextInputLayout input_camponCalzadas,input_campoNCarriles,input_campoAnchoCarril,input_campoAnchoBerma,input_campoPRI;
-    private Button btnFecha;
 
     private  int dia, mes, ano;
 
@@ -45,7 +43,7 @@ public class RegistroSegmentoFlexActivity extends AppCompatActivity {
         campoPRF = (EditText) findViewById(R.id.campoPRFFlex);
         campoComentarios = (EditText) findViewById(R.id.campoComentariosFlex);
         campoFecha = (EditText) findViewById(R.id.campoFechaSegmentoFlexRegistro);
-        btnFecha = (Button) findViewById(R.id.btnFecha);
+
 
 
         tvNombre_Carretera_SegmentoFlex = (TextView) findViewById(R.id.tvNombre_Carretera_SegmentoFlex);
